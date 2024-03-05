@@ -36,6 +36,8 @@
 </head>
 
 <body class="bg-light">
+
+<!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top ">
         <div class="container-fluid">
             <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Rent-A-Car</a>
@@ -73,7 +75,7 @@
         </div>
     </nav>
 
-    <!-- Login Modal -->
+    <!-- Inloggen Modal -->
     <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -103,7 +105,7 @@
         </div>
     </div>
 
-    <!-- Register Modal -->
+    <!-- Registreren Modal -->
     <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -168,7 +170,7 @@
         </div>
     </div>
 
-    <!-- Swiper -->
+    <!-- Slider -->
     <div class="container-fluid px-lg-4 mt-4">
         <div class="swiper swiper-container">
             <div class="swiper-wrapper">
@@ -187,7 +189,8 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Initialize Swiper -->
+    
+    <!-- Initieer Slider -->
     <script>
         var swiper = new Swiper(".swiper-container", {
             spaceBetween: 30,
