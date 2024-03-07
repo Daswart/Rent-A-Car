@@ -191,7 +191,7 @@
         </div>
     </div>
 
-    <!-- Slider -->
+    <!-- SECTIE: Slider -->
     <div class="container-fluid px-lg-4 mt-4">
         <div class="swiper swiper-container">
             <div class="swiper-wrapper">
@@ -209,7 +209,7 @@
         </div>
     </div>
 
-    <!-- beschikbaarheidsformulier -->
+    <!-- SECTIE: Beschikbaarheidsformulier -->
     <div class="container beschikbaarheid-form">
         <div class="row">
             <div class="col-lg-12 bg-white shadow p-4 rounded">
@@ -229,6 +229,89 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTIE: Auto's-->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">ONZE AUTO'S</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                    <img src="afbeeldingen/auto's/auto1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Naam auto</h5>
+                        <h6 class="mb-4">€200 per dag</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Merk:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Merk naam
+                            </span>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-1">Type:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Type naam
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                    <img src="afbeeldingen/auto's/auto1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Naam auto</h5>
+                        <h6 class="mb-4"> €200 per dag</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Merk:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Merk naam
+                            </span>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-1">Type:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Type naam
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                    <img src="afbeeldingen/auto's/auto1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Naam auto</h5>
+                        <h6 class="mb-4"> €200 per dag</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Merk:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Merk naam
+                            </span>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-1">Type:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Type naam
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-5">
+                <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Meer auto's >>></a>
             </div>
         </div>
     </div>
