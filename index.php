@@ -315,6 +315,89 @@
             </div>
         </div>
     </div>
+
+    <!-- SECTIE: Busjes-->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">ONZE BUSJES</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                    <img src="afbeeldingen/busjes/busje1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Naam busje</h5>
+                        <h6 class="mb-4">€200 per dag</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Merk:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Merk naam
+                            </span>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-1">Type:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Type naam
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                    <img src="afbeeldingen/busjes/busje1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Naam auto</h5>
+                        <h6 class="mb-4"> €200 per dag</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Merk:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Merk naam
+                            </span>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-1">Type:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Type naam
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                    <img src="afbeeldingen/busjes/busje1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Naam auto</h5>
+                        <h6 class="mb-4"> €200 per dag</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Merk:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Merk naam
+                            </span>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-1">Type:</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Type naam
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-5">
+                <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Meer busjes >>></a>
+            </div>
+        </div>
+    </div>
     <br><br><br>
     <br><br><br>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
