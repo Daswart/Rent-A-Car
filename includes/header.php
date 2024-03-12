@@ -24,7 +24,7 @@
                         <a class="nav-link active me-2" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="#">Auto huren</a>
+                        <a class="nav-link me-2" href="auto_huren.php">Auto huren</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link me-2" href="#">Busje Huren</a>
