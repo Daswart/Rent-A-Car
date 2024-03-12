@@ -6,48 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent-A-Car</title>
     <?php require('includes/links.php'); ?>
-    <style>
-        * {
-            font-family: 'Poppins', 'sans-serif';
-        }
-
-        .h-font {
-            font-family: 'Merienda', cursive;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[type=number] {
-            appearance: textfield;
-            -moz-appearance: textfield;
-        }
-
-        .custom-bg {
-            background-color: #2ec1ac;
-        }
-
-        .custom-bg:hover {
-            background-color: #279e8c;
-        }
-
-        .beschikbaarheid-form {
-            margin-top: -50px;
-            z-index: 2;
-            position: relative;
-        }
-
-        @media screen and (max-width: 575px) {
-            .beschikbaarheid-form {
-                margin-top: 25px;
-                padding: 0 35px;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="bg-light">
