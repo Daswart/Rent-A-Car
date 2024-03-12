@@ -27,7 +27,7 @@
                         <a class="nav-link me-2" href="auto_huren.php">Auto huren</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="#">Busje Huren</a>
+                        <a class="nav-link me-2" href="busje_huren">Busje Huren</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link me-2" href="contact.php">Contact</a>
