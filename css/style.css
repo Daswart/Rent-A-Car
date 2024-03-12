@@ -45,3 +45,19 @@
          padding: 0 35px;
      }
  }
+
+  /* --------------- 
+    CONTACT.PHP 
+    --------------- */
+
+     .bi-twitter:hover {
+         color: #1DA1F2;
+     }
+
+     .bi-facebook:hover {
+         color: #1877F2;
+     }
+
+     .bi-instagram:hover {
+         color: #fa7e1e;
+     }

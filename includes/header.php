@@ -30,7 +30,7 @@
                         <a class="nav-link me-2" href="#">Busje Huren</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="#">Contact</a>
+                        <a class="nav-link me-2" href="contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="over_ons.php">Over Ons</a>
