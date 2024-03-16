@@ -14,3 +14,12 @@ if (isset($_POST['get_general'])) {
     $json_data = json_encode($data);
     echo $json_data;
 }
+
+if (isset($_POST['upd_general'])) {
+    $frm_data = filteren($_POST);
+
+    $q = "UPDATE `instellingen` SET `site_titel`=?, `site_overOns`=? WHERE `id`=?";
+    $values = [$frm_data['site_titel'], $frm_data['site_overOns'], 1];
+    $res = update($q, $values, 'ssi');
+    echo $res;
+}

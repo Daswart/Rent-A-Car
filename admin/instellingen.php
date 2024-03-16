@@ -43,26 +43,27 @@ adminLogin();
                 <!-- General settings Modal -->
                 <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form></form>
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Algemene Instellingen</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label class="form-label">Site Titel</label>
-                                    <input type="text" name="site_title" class="form-control shadow-none">
+                        <form>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Algemene Instellingen</h5>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Over ons</label>
-                                    <textarea name="site-about" class="form-control shadow-none" rows="6"></textarea>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Site Titel</label>
+                                        <input type="text" name="site_titel" id="site_titel_inp" class="form-control shadow-none">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Over ons</label>
+                                        <textarea name="site_overOns" id="site_overOns_inp" class="form-control shadow-none" rows="6"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" onclick="site_titel_inp.value = general_data.site_titel, site_overOns.value = general_data.site_overOns" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Annuleer</button>
+                                    <button type="button" onclick="upd_general(site_titel.value,site_overOns.value)" class="btn custom-bg text-white shadow-none">VERZENDEN</button>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Annuleer</button>
-                                <button type="button" class="btn custom-bg text-white shadow-none">VERZENDEN</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
@@ -75,8 +76,11 @@ adminLogin();
         let general_data;
 
         function get_general() {
-            let site_title = document.getElementById('site_title');
-            let site_about = document.getElementById('site_about');
+            let site_titel = document.getElementById('site_titel');
+            let site_overOns = document.getElementById('site_overOns');
+
+            let site_titel_inp = document.getElementById('site_titel_inp');
+            let site_overOns_inp = document.getElementById('site_overOns_inp');
 
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/instellingen_crud.php", true);
@@ -84,12 +88,27 @@ adminLogin();
 
             xhr.onload = function() {
                 general_data = JSON.parse(this.responseText);
-                console.log(general_data);
+
                 site_titel.innerText = general_data.site_titel;
                 site_overOns.innerText = general_data.site_overOns;
+
+                site_titel_inp.value = general_data.site_titel;
+                site_overOns_inp.value = general_data.site_overOns;
             }
 
             xhr.send('get_general');
+        }
+
+        function upd_general(site_titel_val, site_overOns_val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/instellingen_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                console.log(this.responseText);
+            }
+
+            xhr.send('site_titel=' + site_titel_val + '&site_overOns=' + site_overOns_val + '&upd_general');
         }
 
         window.onload = function() {
