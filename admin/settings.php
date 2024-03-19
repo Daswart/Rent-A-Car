@@ -19,24 +19,24 @@ adminLogin();
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">SETTINGS</h3>
+                <h3 class="mb-4">INSTELLINGEN</h3>
 
                 <!-- General settings section -->
                 <div class="card border-0 shadow mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">General Settings</h5>
+                            <h5 class="card-title m-0">Algemene Instellingen</h5>
 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#general-s">
-                                <i class="bi bi-pencil-square"></i> Edit
+                                <i class="bi bi-pencil-square"></i> Bewerk
                             </button>
                         </div>
 
-                        <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
+                        <h6 class="card-subtitle mb-1 fw-bold">Titel Website</h6>
                         <p class="card-text" id="site_title"></p>
-                        <h6 class="card-subtitle mb-1 fw-bold">About us</h6>
-                        <p class="card-text" id="site_about">content</p>
+                        <h6 class="card-subtitle mb-1 fw-bold">Over Ons</h6>
+                        <p class="card-text" id="site_about"></p>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@ adminLogin();
                 <div class="card border-0 shadow">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Shutdown Website</h5>
+                            <h5 class="card-title m-0">Schakel Website Uit</h5>
                             <div class="form-check form-switch">
                                 <form>
                                     <input class="form-check-input" onchange="upd_shutdown(this.value)" type="checkbox" id="shutdown-toggle">
@@ -79,7 +79,7 @@ adminLogin();
                             </div>
                         </div>
                         <p class="card-text">
-                            No customers will be allowed to book hotel room, when shutdown mode is turned on.
+                            Als de uitschakelmodus is ingeschakeld, mogen klanten geen auto's of busjes reserveren,
                         </p>
                     </div>
                 </div>

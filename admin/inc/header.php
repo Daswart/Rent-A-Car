@@ -1,6 +1,6 @@
  <div class="container-fluid bg-dark text-light p-3 d-flex align-items-center justify-content-between" id="admin-nav">
-     <h3 class="mb-0 h-font ">HB WEBSITE</h3>
-     <a href="logout.php" class="btn btn-light btn-sm">LOG OUT</a>
+     <h3 class="mb-0 h-font ">Rent-A-Car</h3>
+     <a href="logout.php" class="btn btn-light btn-sm">UITLOGGEN</a>
  </div>
 
  <div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-menu">
@@ -16,13 +16,16 @@
                          <a class="nav-link text-white" href="dashboard.php">Dashboard</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link text-white" href="#">Rooms</a>
+                         <a class="nav-link text-white" href="#">Auto's</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link text-white" href="#">Users</a>
+                         <a class="nav-link text-white" href="#">Busjes</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link text-white" href="settings.php">Settings</a>
+                         <a class="nav-link text-white" href="#">Medewerkers</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link text-white" href="settings.php">Instellingen</a>
                      </li>
                  </ul>
              </div>
