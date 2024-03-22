@@ -7,6 +7,10 @@
     font-family: 'Poppins', 'sans-serif';
   }
 
+  #admin-nav {
+    z-index: 11;
+  }
+
   .h-font {
     font-family: 'Merienda', cursive;
   }
@@ -47,6 +51,7 @@
   #dashboard-menu {
     position: fixed;
     height: 100%;
+    z-index: 11;
   }
 
   #admin-nav {
