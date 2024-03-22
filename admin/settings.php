@@ -216,6 +216,8 @@ adminLogin();
         let site_title_inp = document.getElementById('site_title_inp');
         let site_about_inp = document.getElementById('site_about_inp');
 
+        let contacts_s_form = document.getElementById('contacts_s_form');
+
         function get_general() {
             let site_title = document.getElementById('site_title');
             let site_about = document.getElementById('site_about');
@@ -323,6 +325,43 @@ adminLogin();
             }
         }
 
+        contacts_s_form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            upd_contacts();
+        })
+
+        function upd_contacts() {
+            let index = ['address', 'gmap', 'pn1', 'email', 'fb', 'insta', 'tw', 'iframe'];
+            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'email_inp', 'fb_inp', 'insta_inp', 'tw_inp', 'iframe_inp'];
+
+            let data_str = "";
+
+            for (i = 0; i < index.length; i++) {
+                data_str += index[i] + "=" + document.getElementById(contacts_inp_id[i]).value + '&';
+            }
+            data_str += "upd_contacts";
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+
+                var myModal = document.getElementById('contacts-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+                if (this.responseText == 1) {
+                    alert('success', 'Wijzingen contactgegevens opgeslagen!');
+                    get_contacts();
+
+                } else {
+                    alert('error', 'Wijzigingen contactgegevens niet opgeslagen!');
+
+                }
+            }
+
+            xhr.send(data_str);
+        }
 
         window.onload = function() {
             get_general();
