@@ -424,20 +424,21 @@ adminLogin();
             xhr.open("POST", "ajax/settings_crud.php", true);
 
             xhr.onload = function() {
-                var myModal = document.getElementById('general-s');
-                var modal = bootstrap.Modal.getInstance(myModal);
-                modal.hide();
+                console.log(this.responseText);
+                // var myModal = document.getElementById('general-s');
+                // var modal = bootstrap.Modal.getInstance(myModal);
+                // modal.hide();
 
-                if (this.responseText == 1) {
-                    alert('success', 'Changes saved!');
-                    get_general()
-                } else {
-                    alert('error', 'No Changes made!');
-                }
+                // if (this.responseText == 1) {
+                //     alert('success', 'Changes saved!');
+                //     get_general()
+                // } else {
+                //     alert('error', 'No Changes made!');
+                // }
 
             }
 
-            xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&upd_general');
+            xhr.send(data);
         }
 
 
