@@ -245,11 +245,11 @@ adminLogin();
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Afbeelding</label>
-                                        <input type="file" name="member_picture " id="member_picture_inp" accept=".jpg, .png, .webp, .jpeg" class="form-control shadow-none" required>
+                                        <input type="file" name="member_picture" id="member_picture_inp" accept=".jpg, .png, .webp, .jpeg" class="form-control shadow-none" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" onclick="" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                                    <button type="button" onclick="member_name.value='', member_picture.value=''" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                                 </div>
                             </div>
@@ -478,6 +478,24 @@ adminLogin();
             }
 
             xhr.send('get_members');
+        }
+
+        function rem_member(val) {
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                if (this.responseText == 1) {
+                    alert('success', 'Member removed!');
+                    get_members();
+                } else {
+                    alert('error', 'Server down!')
+                }
+            }
+
+            xhr.send('rem_member=' + val);
         }
 
 
