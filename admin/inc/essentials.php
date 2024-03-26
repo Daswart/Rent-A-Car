@@ -1,5 +1,12 @@
 <?php
 
+//frontend purpose data
+
+define('SITE_URL', 'http://127.0.0.1/Rent-A-Car/');
+define('ABOUT_IMAGE_PATH', SITE_URL . 'images/about/');
+
+//backend upload proces needs this data
+
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Rent-A-Car/images/');
 define('ABOUT_FOLDER', 'about/');
 function adminLogin()
