@@ -164,7 +164,7 @@ adminLogin();
                                                     <label class="form-label fw-bold">Telefoon nummer</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="pn1" id="pn1_inp" class="form-control shadow-none" required>
+                                                        <input type="number" name="pn1" id="pn1_inp" class="form-control shadow-none" required>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
@@ -177,7 +177,7 @@ adminLogin();
                                                     <label class="form-label fw-bold">Social Links</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-facebook"></i></span>
-                                                        <input type="text" name="fb" id="fb_inp" class="form-control shadow-none" required>
+                                                        <input type="text" name="fb" id="fb_inp" class="form-control shadow-none">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-instagram"></i></span>
@@ -185,7 +185,7 @@ adminLogin();
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-twitter"></i></span>
-                                                        <input type="text" name="tw" id="tw_inp" class="form-control shadow-none" required>
+                                                        <input type="text" name="tw" id="tw_inp" class="form-control shadow-none">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">

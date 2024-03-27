@@ -41,27 +41,33 @@
 
                 <div class="bg-white rounded shadow p-4">
                     <!-- <iframe class="w-100" height="320px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115330.30833683435!2d81.71918358360264!3d25.40239586081467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398534c9b20bd49f%3A0xa2237856ad4041a!2sAllahabad%2C%20Uttar%20Pradesh%2C%20India!5e0!3m2!1snl!2snl!4v1709746454294!5m2!1snl!2snl" height="450" loading="lazy"></iframe> -->
-                    <iframe class="w-100" height="320px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d311811.9915701432!2d4.648311020690326!3d52.36985455529862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c617c1dcedf6af%3A0xb7e60f149191e0f!2sMBO%20College%20Almere%20-%20ROC%20van%20Flevoland!5e0!3m2!1snl!2snl!4v1710842975310!5m2!1snl!2snl" height="450" loading="lazy"></iframe>
+                    <iframe class="w-100" height="320px" src="<?php echo $contact_r['iframe'] ?>" height="450" loading="lazy"></iframe>
                     <h5>Adres</h5>
-                    <a href="https://maps.app.goo.gl/KFDW2RVTFe9j85kUA" target="_blank" class="d-inline-block text-decoration-none text-dark">
-                        <i class="bi bi-geo-alt-fill"></i> Roc Flevoland, Almere, Flevoland
+                    <a href="<?php echo $contact_r['gmap'] ?>" target="_blank" class="d-inline-block text-decoration-none text-dark">
+                        <i class="bi bi-geo-alt-fill"></i> <?php echo $contact_r['address'] ?>
                     </a>
                     <h5 class="mt-4">Bel ons</h5>
-                    <a href="TEL +917778889991" class="d-inline-block mb-2 text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i> (036) 123 45 67
+                    <a href="TEL +<?php echo $contact_r['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+                        <i class="bi bi-telephone-fill"></i> <?php echo $contact_r['pn1'] ?>
                     </a>
                     <h5 class="mt-4">Email</h5>
-                    <a href="mailto:rent-a-car@mail.com" class="d-inline-block mb-2 text-decoration-none text-dark">
-                        <i class="bi bi-envelope-fill"></i> Rent-A-Car@mail.com
+                    <a href="mailto:<?php echo $contact_r['email'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+                        <i class="bi bi-envelope-fill"></i> <?php echo $contact_r['email'] ?>
                     </a>
                     <h5 class="mt-4">Volg Ons</h5>
-                    <a href="#" class="d-inline-block text-dark fs-5 me-2">
-                        <i class="bi bi-twitter me-1"></i>
-                    </a>
-                    <a href="#" class="d-inline-block text-dark fs-5 me-2">
+                    <?php
+                    if ($contact_r['tw'] != '') {
+                        echo <<<data
+                            <a href="$contact_r[tw]" class="d-inline-block text-dark fs-5 me-2">
+                            <i class="bi bi-twitter me-1"></i>
+                            </a>
+                            data;
+                    }
+                    ?>
+                    <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block text-dark fs-5 me-2">
                         <i class="bi bi-facebook me-1"></i>
                     </a>
-                    <a href="#" class="d-inline-block text-dark fs-5">
+                    <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block text-dark fs-5">
                         <i class="bi bi-instagram me-1"></i>
                     </a>
                 </div>

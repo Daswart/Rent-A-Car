@@ -16,13 +16,13 @@
                          <a class="nav-link text-white" href="dashboard.php">Dashboard</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link text-white" href="#">Auto's</a>
+                         <a class="nav-link text-white" href="autos.php">Auto's</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link text-white" href="#">Busjes</a>
+                         <a class="nav-link text-white" href="busjes.php">Busjes</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link text-white" href="#">Medewerkers</a>
+                         <a class="nav-link text-white" href="medewerkers.php">Medewerkers</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link text-white" href="settings.php">Instellingen</a>
