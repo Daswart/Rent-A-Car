@@ -4,6 +4,7 @@
 
 define('SITE_URL', 'http://127.0.0.1/Rent-A-Car/');
 define('ABOUT_IMAGE_PATH', SITE_URL . 'images/about/');
+define('CAROUSEL_FOLDER', 'carousel/');
 
 //backend upload proces needs this data
 
