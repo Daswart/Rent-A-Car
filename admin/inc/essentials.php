@@ -4,12 +4,13 @@
 
 define('SITE_URL', 'http://127.0.0.1/Rent-A-Car/');
 define('ABOUT_IMAGE_PATH', SITE_URL . 'images/about/');
-define('CAROUSEL_FOLDER', 'carousel/');
+define('CAROUSEL_IMG_PATH', SITE_URL . 'images/carousel/');
 
 //backend upload proces needs this data
 
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Rent-A-Car/images/');
 define('ABOUT_FOLDER', 'about/');
+define('CAROUSEL_FOLDER', 'carousel/');
 function adminLogin()
 {
     session_start();
