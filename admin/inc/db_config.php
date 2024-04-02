@@ -79,11 +79,12 @@ function insert($sql, $values, $datatypes)
             mysqli_stmt_close($stmt);
             return $res;
         } else {
+            echo $stmt->error;
             mysqli_stmt_close($stmt);
-            die("Query cannot be executed - Insert");
+            die("Query Kan niet worden uitgevoerd - Insert");
         }
     } else {
-        die("Query cannot be prepared - Insert");
+        die("Query kan niet worden voorbereid - Insert");
     }
 }
 

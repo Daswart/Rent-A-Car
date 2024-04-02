@@ -74,33 +74,46 @@
             </div>
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4">
-                    <form>
+                    <form method="POST">
                         <h5>Stuur een bericht</h5>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500">Naam</label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name='name' required type="text" class="form-control shadow-none">
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500">Email</label>
-                            <input type="email" class="form-control shadow-none">
+                            <input name='email' required type="email" class="form-control shadow-none">
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500">Onderwerp</label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name='subject' required type="text" class="form-control shadow-none">
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500">Bericht</label>
-                            <textarea class="form-control shadow-none" rows="5" style="resize: none;"></textarea>
+                            <textarea name='message' required class="form-control shadow-none" rows="5" style="resize: none;"></textarea>
                         </div>
-                        <button type="submit" class="btn text-white custom-bg mt-3">VERSTUUR</button>
+                        <button type="submit" name='send' class="btn text-white custom-bg mt-3">VERSTUUR</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <?php
+    if (isset($_POST['send'])) {
+        $frm_data = filteration($_POST);
+        $q = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES (?,?,?,?)";
+        $values = [$frm_data['name'], $frm_data['email'], $frm_data['subject'], $frm_data['message']];
+
+        $res = insert($q, $values, 'ssss');
+        if ($res === 1) {
+            alert('success', 'Bericht verstuurd!');
+        } else {
+            alert('error', 'Server Error! Probeer later nog eens');
+        }
+    }
+    ?>
+
     <?php require('inc/footer.php') ?>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
