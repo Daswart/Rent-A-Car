@@ -17,6 +17,21 @@ if (isset($_GET['seen'])) {
         }
     }
 }
+
+if (isset($_GET['del'])) {
+    $frm_data = filteration($_GET);
+
+    if ($frm_data['del'] == 'all') {
+    } else {
+        $q = "DELETE FROM `user_queries` WHERE `sr_no` = ?";
+        $values = [$frm_data['del']];
+        if (deleteRow($q, $values, 'i')) {
+            alert('success', 'Data verwijderd!');
+        } else {
+            alert('error', 'Verwijderen Mislukt');
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
