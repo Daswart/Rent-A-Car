@@ -2,6 +2,21 @@
 require('inc/essentials.php');
 require('inc/db_config.php');
 adminLogin();
+
+if (isset($_GET['seen'])) {
+    $frm_data = filteration($_GET);
+
+    if ($frm_data['seen'] == 'all') {
+    } else {
+        $q = "UPDATE `user_queries` SET `seen`=? WHERE `sr_no` = ?";
+        $values = [1, $frm_data['seen']];
+        if (update($q, $values, 'ii')) {
+            alert('success', 'Gemarkeerd als gelezen');
+        } else {
+            alert('error', 'Gemarkeerd als gelezen mislukt');
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +37,7 @@ adminLogin();
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
                 <h3 class="mb-4">Berichten Klanten</h3>
 
-                <!-- Carousel section -->
+                
                 <div class="card border-0 shadow-sm mb-4" style="height: 450px; overflow-y: scroll">
                     <div class="card-body">
                         <div class="table-responsive-md">
