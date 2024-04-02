@@ -7,6 +7,13 @@ if (isset($_GET['seen'])) {
     $frm_data = filteration($_GET);
 
     if ($frm_data['seen'] == 'all') {
+        $q = "UPDATE `user_queries` SET `seen`=?";
+        $values = [1];
+        if (update($q, $values, 'i')) {
+            alert('success', 'Alle berichten gemarkeerd als gelezen!');
+        } else {
+            alert('error', 'Alle berichten gemarkeerd als gelezen mislukt!');
+        }
     } else {
         $q = "UPDATE `user_queries` SET `seen`=? WHERE `sr_no` = ?";
         $values = [1, $frm_data['seen']];
@@ -22,13 +29,19 @@ if (isset($_GET['del'])) {
     $frm_data = filteration($_GET);
 
     if ($frm_data['del'] == 'all') {
+        $q = "DELETE FROM `user_queries`";
+        if (mysqli_query($con, $q)) {
+            alert('success', 'Alle berichten verwijderd!');
+        } else {
+            alert('error', 'Alle berichten verwijderd mislukt!');
+        }
     } else {
         $q = "DELETE FROM `user_queries` WHERE `sr_no` = ?";
         $values = [$frm_data['del']];
         if (deleteRow($q, $values, 'i')) {
-            alert('success', 'Data verwijderd!');
+            alert('success', 'Bericht verwijderd!');
         } else {
-            alert('error', 'Verwijderen Mislukt');
+            alert('error', 'Bericht verwijderen mislukt');
         }
     }
 }
@@ -52,9 +65,17 @@ if (isset($_GET['del'])) {
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
                 <h3 class="mb-4">Berichten Klanten</h3>
 
-                
+
                 <div class="card border-0 shadow-sm mb-4" style="height: 450px; overflow-y: scroll">
                     <div class="card-body">
+                        <div class="text-end mb-4">
+                            <a href="?seen=all" class=" btn btn-dark rounded-pill shadow-none btn-sm">
+                                <i class="bi bi-check-all"></i> Markeer alles als gelezen
+                            </a>
+                            <a href="?del=all" class=" btn btn-danger rounded-pill shadow-none btn-sm">
+                                <i class="bi bi-trash"></i> Verwijder alles
+                            </a>
+                        </div>
                         <div class="table-responsive-md">
                             <table class="table table-hover border">
                                 <thead class="sticky-top">
@@ -82,9 +103,9 @@ if (isset($_GET['del'])) {
 
                                         $seen = '';
                                         if ($row['seen'] != 1) {
-                                            $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm rounded-pill btn-primary'>Markeer als gelezen</a>";
+                                            $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm rounded-pill btn-primary'>Markeer als gelezen</a><br>";
                                         }
-                                        $seen .= "<a href='?del=$row[sr_no]' class='btn btn-sm rounded-pill btn-danger ms-2'>Verwijder</a>";
+                                        $seen .= "<a href='?del=$row[sr_no]' class='btn btn-sm rounded-pill btn-danger mt-2'>Verwijder</a>";
                                         echo <<<query
                                         <tr>
                                         <td>$i</td>
