@@ -16,7 +16,7 @@
                          <a class="nav-link text-white" href="dashboard.php">Dashboard</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link text-white" href="autos.php">Auto's</a>
+                         <a class="nav-link text-white" href="cars.php">Auto's</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link text-white" href="busjes.php">Busjes</a>
