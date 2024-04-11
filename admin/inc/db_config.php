@@ -29,7 +29,12 @@ function filteration($data)
 function selectAll($table)
 {
     $con = $GLOBALS['con'];
-    $res = mysqli_query($con, "SELECT * FROM $table ORDER BY `sr_no`");
+
+    if($table == 'cars'){
+        $res = mysqli_query($con, "SELECT * FROM $table ORDER BY `status` DESC, `brand`");
+    }else{
+        $res = mysqli_query($con, "SELECT * FROM $table ORDER BY `sr_no`");
+    }
     return $res;
 }
 
