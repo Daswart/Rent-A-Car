@@ -138,6 +138,23 @@ adminLogin();
 
             xhr.send(data);
         }
+
+        function get_all_cars() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                document.getElementById('room-data').innerHTML = this.responseText;
+            }
+
+
+            xhr.send('get_all_cars');
+        }
+
+        window.onload = function() {
+            get_all_cars();
+        }
     </script>
 </body>
 
