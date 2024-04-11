@@ -81,7 +81,7 @@ function insert($sql, $values, $datatypes)
         } else {
             echo $stmt->error;
             mysqli_stmt_close($stmt);
-            die("Query Kan niet worden uitgevoerd - Insert");
+            die("<br>Query kan niet worden uitgevoerd - Insert</p>");
         }
     } else {
         die("Query kan niet worden voorbereid - Insert");
