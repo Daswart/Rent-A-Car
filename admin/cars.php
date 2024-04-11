@@ -38,7 +38,7 @@ while ($opt = mysqli_fetch_assoc($res)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Rooms </title>
+    <title>Admin Panel - Cars </title>
     <?php require('inc/links.php'); ?>
 </head>
 
@@ -47,16 +47,16 @@ while ($opt = mysqli_fetch_assoc($res)) {
     <?php require('inc/header.php') ?>
 
     <div class="container-fluid" id="main-content">
-        <div class="row">
+        <div class="row">   
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">ROOMS</h3>
+                <h3 class="mb-4">AUTOS</h3>
 
                 <!-- Car section -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
 
                         <div class="text-end mb-4">
-                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#add-room">
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#add-car">
                                 <i class="bi bi-plus-square"></i> Toevoegen
                             </button>
                         </div>
@@ -75,7 +75,7 @@ while ($opt = mysqli_fetch_assoc($res)) {
                                         <th scope="col">Actie</th>
                                     </tr>
                                 </thead>
-                                <tbody id="room-data">
+                                <tbody id="car-data">
                                 </tbody>
                             </table>
                         </div>
@@ -88,9 +88,9 @@ while ($opt = mysqli_fetch_assoc($res)) {
     </div>
 
     <!-- Add car modal -->
-    <div class="modal fade" id="add-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="add-car" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <form id="add_room_form" autocomplete="off">
+            <form id="add_car_form" autocomplete="off">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Auto Toevoegen</h5>
@@ -197,7 +197,7 @@ while ($opt = mysqli_fetch_assoc($res)) {
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label fw-bold">Beschrijving</label>
-                                <textarea name="desc" rows="4" class="form-control shadow-none"></textarea>
+                                <textarea name="description" rows="4" class="form-control shadow-none"></textarea>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,58 @@ while ($opt = mysqli_fetch_assoc($res)) {
     </div>
 
     <?php require('inc/scripts.php'); ?>
-    <!-- <script src="scripts/features_facilities.js"></script> -->
+    <script>
+        let add_car_form = document.getElementById('add_car_form');
+
+        add_car_form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            add_cars();
+        })
+
+        function add_cars() {
+            let data = new FormData();
+            data.append('add_car', '');
+            data.append('name', add_car_form.elements['name'].value);
+            data.append('license_plate', add_car_form.elements['license_plate'].value);
+            data.append('brand', add_car_form.elements['brand'].value);
+            data.append('cost_per_day', add_car_form.elements['cost_per_day'].value);
+            data.append('desc', add_car_form.elements['description'].value);
+            data.append('fuel', add_car_form.elements['fuel'].value);
+            data.append('gear', add_car_form.elements['gear'].value);
+            data.append('seats', add_car_form.elements['seats'].value);
+            data.append('doors', add_car_form.elements['doors'].value);
+            data.append('suitcase', add_car_form.elements['suitcase'].value);
+            data.append('airco', add_car_form.elements['suitcase'].value);
+
+            let facilities = [];
+            add_room_form.elements[''].forEach(el => {
+                if (el.checked) {
+                    facilities.push(el.value);
+                }
+            })
+            data.append('facilities', JSON.stringify(facilities));
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+
+            xhr.onload = function() {
+                console.log(this.responseText);
+                var myModal = document.getElementById('add-car');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if (this.responseText == 1) {
+                    alert('success', 'New car added!');
+                    add_room_form.reset();
+                } else {
+                    alert('error', 'Server Down!');
+                }
+
+            }
+
+            xhr.send(data);
+        }
+    </script>
 
 </body>
 
