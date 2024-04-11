@@ -46,10 +46,29 @@ if (isset($_POST['get_all_cars'])) {
             <td>$$row[cost_per_day]</td>
             <td>$description</td>
             <td>$status</td>
-            <td>Buttons</td>
+            <td>
+                <button type='button' onclick='edit_details($row[sr_no])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit_room'>
+                    <i class='bi bi-pencil-square'></i>
+                </button>
+            </td>
         </tr class='align-middle'>";
         $i++;
     }
+
+    echo $data;
+}
+
+if (isset($_POST['get_car'])) {
+
+    $frm_data = filteration($_POST);
+
+    $res1 = select("SELECT * FROM `cars` WHERE `sr_no`=?", [$frm_data['get_car']], 'i');
+
+    $roomdata = mysqli_fetch_assoc($res1);
+
+    $data = ["roomdata" => $roomdata];
+
+    $data = json_encode($data);
 
     echo $data;
 }
