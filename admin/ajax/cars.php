@@ -32,9 +32,9 @@ if (isset($_POST['get_all_cars'])) {
 
     while ($row = mysqli_fetch_assoc($res)) {
         if ($row['status'] == 1) {
-            $status = "<button class='btn btn-dark btn-sm shadow-none'>beschikbaar</button>";
+            $status = "<button onclick='toggle_status($row[sr_no], 0)' class='btn btn-success btn-sm shadow-none'>beschikbaar</button>";
         } else {
-            $status = "<button class='btn btn-warning btn-sm shadow-none'>niet beschikbaar</button>";
+            $status = "<button onclick='toggle_status($row[sr_no], 1)' class='btn btn-danger btn-sm shadow-none'>niet beschikbaar</button>";
         }
         $data .= "
         <tr class='align-middle'>
@@ -46,9 +46,23 @@ if (isset($_POST['get_all_cars'])) {
             <td>$row[description]</td>
             <td>$status</td>
             <td>Buttons</td>
-        </tr>";
+        </tr class='align-middle'>";
         $i++;
     }
 
     echo $data;
+}
+
+if (isset($_POST['toggle_status'])) {
+
+    $frm_data = filteration($_POST);
+
+    $q = "UPDATE `cars` SET `status`=? WHERE `sr_no`=?";
+    $v = [$frm_data['value'], $frm_data['toggle_status']];
+
+    if (update($q, $v, 'ii')) {
+        echo 1;
+    } else {
+        echo 0;
+    }
 }

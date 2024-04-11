@@ -34,9 +34,9 @@ adminLogin();
                         </div>
 
                         <div class="table-responsive-md" style="height: 450px; overflow-y: scroll">
-                            <table class="table table-hover border">
+                            <table class="table table-hover border text-center">
                                 <thead>
-                                    <tr class="bg-dark text-light">
+                                    <tr class=" bg-dark text-light">
                                         <th scope="col">#</th>
                                         <th scope="col">Kenteken</th>
                                         <th scope="col">Merk</th>
@@ -47,7 +47,7 @@ adminLogin();
                                         <th scope="col">Actie</th>
                                     </tr>
                                 </thead>
-                                <tbody id="room-data">
+                                <tbody id="car-data">
                                 </tbody>
                             </table>
                         </div>
@@ -145,11 +145,29 @@ adminLogin();
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             xhr.onload = function() {
-                document.getElementById('room-data').innerHTML = this.responseText;
+                document.getElementById('car-data').innerHTML = this.responseText;
             }
 
 
             xhr.send('get_all_cars');
+        }
+
+        function toggle_status(id, val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                if (this.responseText == 1) {
+                    alert('success', 'Status aangepast!');
+                    get_all_cars();
+                } else {
+                    alert('error', 'Oops!Er is iets misgegaan!');
+                }
+            }
+
+
+            xhr.send('toggle_status=' + id + "&value=" + val);
         }
 
         window.onload = function() {
