@@ -51,7 +51,7 @@ while ($opt = mysqli_fetch_assoc($res)) {
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
                 <h3 class="mb-4">ROOMS</h3>
 
-                <!-- Room section -->
+                <!-- Car section -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
 
@@ -66,13 +66,13 @@ while ($opt = mysqli_fetch_assoc($res)) {
                                 <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Area</th>
-                                        <th scope="col">Guests</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Kenteken</th>
+                                        <th scope="col">Merk</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Prijs</th>
+                                        <th scope="col">Beschrijving</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Actie</th>
                                     </tr>
                                 </thead>
                                 <tbody id="room-data">
@@ -87,7 +87,7 @@ while ($opt = mysqli_fetch_assoc($res)) {
         </div>
     </div>
 
-    <!-- Add room modal -->
+    <!-- Add car modal -->
     <div class="modal fade" id="add-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <form id="add_room_form" autocomplete="off">
@@ -182,8 +182,8 @@ while ($opt = mysqli_fetch_assoc($res)) {
                                         </div>
                                        ";
                                     }
-                                     echo '<br><br><label class="form-label text-decoration-underline"></label>';
-                                        echo "
+                                    echo '<br><br><label class="form-label text-decoration-underline"></label>';
+                                    echo "
                                        <div class='col-md-3'>
                                         <label>
                                             <input type='checkbox' name='airco' value='$airco_id' class='form-check-input shadow-none'>
@@ -191,9 +191,13 @@ while ($opt = mysqli_fetch_assoc($res)) {
                                         </label>
                                         </div>
                                        ";
-                                   
+
                                     ?>
                                 </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label fw-bold">Beschrijving</label>
+                                <textarea name="desc" rows="4" class="form-control shadow-none"></textarea>
                             </div>
                         </div>
                     </div>
