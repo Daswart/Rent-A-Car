@@ -130,6 +130,7 @@ adminLogin();
                 if (this.responseText == 1) {
                     alert('success', 'Nieuwe auto toegevoegd!');
                     add_car_form.reset();
+                    get_all_cars();
                 } else {
                     alert('error', 'Oeps, Er is iets misgegaan!');
                 }
