@@ -47,7 +47,7 @@ if (isset($_POST['get_all_cars'])) {
             <td>$description</td>
             <td>$status</td>
             <td>
-                <button type='button' onclick='edit_details($row[sr_no])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit_room'>
+                <button type='button' onclick='edit_details($row[sr_no])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit_car'>
                     <i class='bi bi-pencil-square'></i>
                 </button>
             </td>

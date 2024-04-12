@@ -100,6 +100,47 @@ adminLogin();
         </div>
     </div>
 
+    <!-- Edit car modal -->
+    <div class="modal fade" id="edit_car" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form id="edit_car_form" autocomplete="off">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Auto Bewerken</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Kenteken</label>
+                                <input type="text" name="license_plate" class="form-control shadow-none" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Merk</label>
+                                <input type="text" min="1" name="brand" class="form-control shadow-none" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Type</label>
+                                <input type="text" min="1" name="type" class="form-control shadow-none" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Prijs per dag</label>
+                                <input type="number" min="1" name="cost_per_day" class="form-control shadow-none" required>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label fw-bold">Beschrijving</label>
+                                <textarea name="description" rows="4" class="form-control shadow-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Annuleer</button>
+                        <button type="submit" class="btn custom-bg text-white shadow-none">Verzenden</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <?php require('inc/scripts.php'); ?>
     <script>
         let add_car_form = document.getElementById('add_car_form');
@@ -151,6 +192,29 @@ adminLogin();
 
 
             xhr.send('get_all_cars');
+        }
+
+        let edit_car_form = document.getElementById('edit_car_form');
+
+        function edit_details(id) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+
+            xhr.onload = function() {
+                console.log(JSON.parse(this.responseText));
+
+                let data = JSON.parse(this.responseText);
+                edit_car_form.elements['license_plate'].value = data.roomdata.license_plate;
+                edit_car_form.elements['brand'].value = data.roomdata.brand;
+                edit_car_form.elements['type'].value = data.roomdata.type;
+                edit_car_form.elements['cost_per_day'].value = data.roomdata.cost_per_day;
+                edit_car_form.elements['description'].value = data.roomdata.description;
+
+            }
+
+            xhr.send('get_car=' + id);
         }
 
         function toggle_status(id, val) {
