@@ -66,10 +66,12 @@ function update($sql, $values, $datatypes)
             mysqli_stmt_close($stmt);
             return $res;
         } else {
+            echo mysqli_error($con);
             mysqli_stmt_close($stmt);
             die("Query cannot be executed - Update");
         }
     } else {
+        echo mysqli_error($con);
         die("Query cannot be prepared - Update");
     }
 }

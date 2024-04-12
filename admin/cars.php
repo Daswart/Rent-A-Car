@@ -130,6 +130,7 @@ adminLogin();
                                 <label class="form-label fw-bold">Beschrijving</label>
                                 <textarea name="description" rows="4" class="form-control shadow-none"></textarea>
                             </div>
+                            <input type="hidden" name="car_id">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -206,15 +207,52 @@ adminLogin();
                 console.log(JSON.parse(this.responseText));
 
                 let data = JSON.parse(this.responseText);
+                edit_car_form.elements['car_id'].value = data.roomdata.sr_no;
                 edit_car_form.elements['license_plate'].value = data.roomdata.license_plate;
                 edit_car_form.elements['brand'].value = data.roomdata.brand;
                 edit_car_form.elements['type'].value = data.roomdata.type;
                 edit_car_form.elements['cost_per_day'].value = data.roomdata.cost_per_day;
                 edit_car_form.elements['description'].value = data.roomdata.description;
-
             }
 
             xhr.send('get_car=' + id);
+        }
+
+        edit_car_form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submit_edit_car();
+        })
+
+        function submit_edit_car() {
+            let data = new FormData();
+            data.append('edit_car', '');
+            data.append('car_id', edit_car_form.elements['car_id'].value);
+            data.append('license_plate', edit_car_form.elements['license_plate'].value);
+            data.append('brand', edit_car_form.elements['brand'].value);
+            data.append('type', edit_car_form.elements['type'].value);
+            data.append('cost_per_day', edit_car_form.elements['cost_per_day'].value);
+            data.append('description', edit_car_form.elements['description'].value);
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+
+            xhr.onload = function() {
+                console.log(this.responseText);
+                var myModal = document.getElementById('edit_car');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if (this.responseText == 1) {
+                    alert('success', 'Auto is geüpdatet!');
+                    edit_car_form.reset();
+                    get_all_cars();
+                } else {
+                    alert('error', 'Oops, er is iets misgegaan!');
+                }
+
+            }
+
+            xhr.send(data);
         }
 
         function toggle_status(id, val) {

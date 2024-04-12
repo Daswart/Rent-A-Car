@@ -72,6 +72,24 @@ if (isset($_POST['get_car'])) {
 
     echo $data;
 }
+if (isset($_POST['edit_car'])) {
+
+    $frm_data = filteration($_POST);
+    $flag = 0;
+
+    $q1 = "UPDATE `cars` SET `license_plate`=?, `brand`=?, `type`=?, `cost_per_day`=?, 
+    `description`=? WHERE `sr_no` =?";
+    $values = [$frm_data['license_plate'], $frm_data['brand'], $frm_data['type'], $frm_data['cost_per_day'], $frm_data['description'], $frm_data['car_id']];
+    if (update($q1, $values, 'sssisi')) {
+        $flag = 1;
+    }
+
+    if ($flag) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
 
 if (isset($_POST['toggle_status'])) {
 
