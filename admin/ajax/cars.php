@@ -25,7 +25,7 @@ if (isset($_POST['add_car'])) {
 }
 
 if (isset($_POST['get_all_cars'])) {
-    $res = selectAll('cars');
+    $res = select('SELECT * FROM `cars` WHERE `removed`=?', [0], 'i');
     $i = 1;
 
     $data = "";
@@ -52,6 +52,9 @@ if (isset($_POST['get_all_cars'])) {
                 </button>
                  <button type='button' onclick=\"car_images($row[sr_no], '$row[brand]', '$row[type]', '$row[license_plate]' )\"  class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#car_images'>
                     <i class='bi bi-images'></i>
+                </button>
+                  <button type='button' onclick='remove_car($row[sr_no])' class='btn btn-danger shadow-none btn-sm'>
+                    <i class='bi bi-trash'></i>
                 </button>
             </td>
         </tr class='align-middle'>";
@@ -194,4 +197,24 @@ if (isset($_POST['thumb_image'])) {
     $pre_res = update($q, $v, 'iii');
 
     echo $pre_res;
+}
+
+if (isset($_POST['remove_car'])) {
+
+    $frm_data = filteration($_POST);
+
+    $res = select("SELECT * FROM `car_images` WHERE `car_id`=?", [$frm_data['car_id']], 'i');
+
+    while ($row = mysqli_fetch_assoc($res)) {
+        deleteImage($row['image'], CARS_FOLDER);
+    }
+
+    $res2 = deleteRow("DELETE FROM `car_images` WHERE `car_id`=?", [$frm_data['car_id']], 'i');
+    $res3 = update("UPDATE `cars` SET `removed`=? WHERE `sr_no`=?", [1, $frm_data['car_id']], 'ii');
+
+    if ($res2 || $res3) {
+        echo 1;
+    } else {
+        echo 0;
+    }
 }

@@ -402,6 +402,31 @@ adminLogin();
             }
             xhr.send(data);
         }
+
+        function remove_car(car_id) {
+
+            if (confirm("Are you sure, you want to delete this room")) {
+
+                let data = new FormData();
+                data.append('car_id', car_id);
+                data.append('remove_car', '');
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/cars.php", true);
+
+                xhr.onload = function() {
+
+                    if (this.responseText == 1) {
+                        alert('success', 'Auto Verwijderd!');
+                        get_all_cars();
+                    } else {
+                        alert('error', 'Verwijderen Auto mislukt!');
+                    }
+                }
+                xhr.send(data);
+            }
+        }
+
         window.onload = function() {
             get_all_cars();
         }
