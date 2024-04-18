@@ -151,6 +151,7 @@ adminLogin();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div id="image-alert"></div>
                     <div class="border-bottom border-3 pb-3 mb-3">
                         <form id="add_image_form">
                             <label class="form-label fw-bold">Afbeelding Toevoegen</label>
@@ -327,13 +328,13 @@ adminLogin();
             xhr.onload = function() {
 
                 if (this.responseText == 'inv_img') {
-                    alert('error', 'Only JPG, WEBP or PNG images are allowed!');
+                    alert('error', 'Alleen afbeeldingen van het type JPG, WEBP of PNG zijn toegestaan!', 'image-alert');
                 } else if (this.responseText == 'inv_size') {
-                    alert('error', 'Image should be less than 2MB!');
+                    alert('error', 'De afbeelding moet kleiner zijn dan 2MB!', 'image-alert');
                 } else if (this.responseText == 'upd_failed') {
-                    alert('error', 'Image upload failed. Server Down!');
+                    alert('error', 'Uploaden van de afbeelding is mislukt', 'image-alert');
                 } else {
-                    alert('success', 'New image added!');
+                    alert('success', 'Nieuwe afbeelding toegevoegd!', 'image-alert');
                     add_image_form.reset();
                 }
             }
