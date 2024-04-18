@@ -335,15 +335,28 @@ adminLogin();
                     alert('error', 'Uploaden van de afbeelding is mislukt', 'image-alert');
                 } else {
                     alert('success', 'Nieuwe afbeelding toegevoegd!', 'image-alert');
+                    car_images(add_image_form.elements['car_id'].value, document.querySelector("#car_images .modal-title").innerText);
                     add_image_form.reset();
                 }
             }
             xhr.send(data);
         }
 
-        function car_images(id, brand, type, license_plate) {
-            document.querySelector("#car_images .modal-title").innerText = brand + ' ' + type + '\n' + license_plate;
+        function car_images(id, brand) {
+            document.querySelector("#car_images .modal-title").innerText = brand;
             add_image_form.elements['car_id'].value = id;
+
+            add_image_form['image'].value = '';
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                document.getElementById('car-image-data').innerHTML = this.responseText;
+            }
+
+            xhr.send('get_car_images=' + id);
         }
 
         window.onload = function() {

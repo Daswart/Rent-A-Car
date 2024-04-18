@@ -75,6 +75,7 @@ if (isset($_POST['get_car'])) {
 
     echo $data;
 }
+
 if (isset($_POST['edit_car'])) {
 
     $frm_data = filteration($_POST);
@@ -108,7 +109,6 @@ if (isset($_POST['toggle_status'])) {
     }
 }
 
-
 if (isset($_POST['add_image'])) {
     $frm_data = filteration($_POST);
 
@@ -125,5 +125,28 @@ if (isset($_POST['add_image'])) {
         $values = [$frm_data['car_id'], $img_r];
         $res = insert($q, $values, 'is');
         echo $res;
+    }
+}
+
+if (isset($_POST['get_car_images'])) {
+
+    $frm_data = filteration($_POST);
+    $res = select("SELECT * FROM `car_images` WHERE `car_id`=?", [$frm_data['get_car_images']], 'i');
+
+    $path = CARS_IMG_PATH;
+
+    while ($row = mysqli_fetch_assoc($res)) {
+
+        echo <<<data
+            <tr class='align-middle'>
+            <td><img src='$path$row[image]' class='img-fluid'></td>
+            <td>thumb</td>
+            <td>
+                <button onclick='rem_image($row[sr_no], $row[car_id])' class='btn btn-danger btn-sm shadow-none'>
+                <i class='bi bi-trash'></i>
+                </button>
+            </td> 
+            </tr>
+        data;
     }
 }
