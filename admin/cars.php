@@ -142,6 +142,26 @@ adminLogin();
         </div>
     </div>
 
+    <!--Manage car images modal -->
+    <div class="modal fade" id="car_images" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Auto naam</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add_image_form">
+                        <label class="form-label fw-bold">Afbeelding Toevoegen</label>
+                        <input type="file" name="image" accept=".jpg, .png, .webp, .jpeg" class="form-control shadow-none mb-3" required>
+                        <button type="submit" class="btn custom-bg text-white shadow-none">TOEVOEGEN</button>
+                        <input type="hidden" name="car_id">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php require('inc/scripts.php'); ?>
     <script>
         let add_car_form = document.getElementById('add_car_form');
