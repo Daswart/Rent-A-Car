@@ -137,10 +137,18 @@ if (isset($_POST['get_car_images'])) {
 
     while ($row = mysqli_fetch_assoc($res)) {
 
+        if ($row['thumb'] == 1) {
+            $thumb_btn = "<i class='bi bi-check-lg text-light bg-success px-2 py-1 rounded'></i>";
+        } else {
+            $thumb_btn = "<button onclick='thumb_image($row[sr_no], $row[car_id])' class='btn btn-secondary btn-sm shadow-none'>
+                <i class='bi bi-check-lg'></i>
+                </button>";
+        }
+
         echo <<<data
             <tr class='align-middle'>
             <td><img src='$path$row[image]' class='img-fluid'></td>
-            <td>thumb</td>
+            <td>$thumb_btn</td>
             <td>
                 <button onclick='rem_image($row[sr_no], $row[car_id])' class='btn btn-danger btn-sm shadow-none'>
                 <i class='bi bi-trash'></i>
@@ -168,4 +176,22 @@ if (isset($_POST['rem_image'])) {
     } else {
         echo 0;
     }
+}
+
+
+if (isset($_POST['thumb_image'])) {
+
+    $frm_data = filteration($_POST);
+
+    // Set all thumb to 0 on all images
+    $pre_q = "UPDATE `car_images` SET `thumb`=? WHERE `car_id`=?";
+    $pre_v = [0, $frm_data['car_id']];
+    $pre_res = update($pre_q, $pre_v, 'ii');
+
+    // Set thumb to 1 to clicked image
+    $q = "UPDATE `car_images` SET `thumb`=? WHERE `sr_no`=? AND `car_id`=?";
+    $v = [1, $frm_data['image_id'], $frm_data['car_id']];
+    $pre_res = update($q, $v, 'iii');
+
+    echo $pre_res;
 }

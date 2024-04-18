@@ -381,6 +381,27 @@ adminLogin();
             xhr.send(data);
         }
 
+        function thumb_image(img_id, car_id) {
+
+            let data = new FormData();
+            data.append('image_id', img_id);
+            data.append('car_id', car_id);
+            data.append('thumb_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+
+            xhr.onload = function() {
+
+                if (this.responseText == 1) {
+                    alert('success', 'Afbeelding Thumbnail veranderd!', 'image-alert');
+                    car_images(car_id, document.querySelector("#car_images .modal-title").innerText);
+                } else {
+                    alert('error', 'Veranderen Afbeelding Thumbnail muslukt!', 'image-alert');
+                }
+            }
+            xhr.send(data);
+        }
         window.onload = function() {
             get_all_cars();
         }
