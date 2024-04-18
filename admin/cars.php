@@ -359,6 +359,28 @@ adminLogin();
             xhr.send('get_car_images=' + id);
         }
 
+        function rem_image(img_id, car_id) {
+
+            let data = new FormData();
+            data.append('image_id', img_id);
+            data.append('car_id', car_id);
+            data.append('rem_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/cars.php", true);
+
+            xhr.onload = function() {
+
+                if (this.responseText == 1) {
+                    alert('success', 'Afbeelding verwijderd!', 'image-alert');
+                    car_images(car_id, document.querySelector("#car_images .modal-title").innerText);
+                } else {
+                    alert('error', 'Afbeedling verwijderen mislukt!', 'image-alert');
+                }
+            }
+            xhr.send(data);
+        }
+
         window.onload = function() {
             get_all_cars();
         }

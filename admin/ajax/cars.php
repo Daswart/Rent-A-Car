@@ -150,3 +150,22 @@ if (isset($_POST['get_car_images'])) {
         data;
     }
 }
+
+if (isset($_POST['rem_image'])) {
+
+    $frm_data = filteration($_POST);
+
+    $values = [$frm_data['image_id'], $frm_data['car_id']];
+
+    $pre_q = "SELECT * FROM `car_images` WHERE `sr_no`=? AND `car_id`=?";
+    $res = select($pre_q, $values, 'ii');
+    $img = mysqli_fetch_assoc($res);
+
+    if (deleteImage($img['image'], CARS_FOLDER)) {
+        $q = "DELETE FROM `car_images` WHERE `sr_no`=? AND `car_id`=?";
+        $res = deleteRow($q, $values, 'ii');
+        echo $res;
+    } else {
+        echo 0;
+    }
+}
