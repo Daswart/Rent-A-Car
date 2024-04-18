@@ -50,7 +50,7 @@ if (isset($_POST['get_all_cars'])) {
                 <button type='button' onclick='edit_details($row[sr_no])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit_car'>
                     <i class='bi bi-pencil-square'></i>
                 </button>
-                 <button type='button' onclick='' class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#car_images'>
+                 <button type='button' onclick=\"car_images($row[sr_no], '$row[brand]', '$row[type]', '$row[license_plate]' )\"  class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#car_images'>
                     <i class='bi bi-images'></i>
                 </button>
             </td>
@@ -105,5 +105,25 @@ if (isset($_POST['toggle_status'])) {
         echo 1;
     } else {
         echo 0;
+    }
+}
+
+
+if (isset($_POST['add_image'])) {
+    $frm_data = filteration($_POST);
+
+    $img_r = uploadImage($_FILES['image'], CARS_FOLDER);
+
+    if ($img_r == 'inv_img') {
+        echo $img_r;
+    } else if ($img_r == 'inv_size') {
+        echo $img_r;
+    } else if ($img_r == 'upd_failed') {
+        echo $img_r;
+    } else {
+        $q = "INSERT INTO `car_images`(`car_id`, `image`) VALUES (?,?)";
+        $values = [$frm_data['car_id'], $img_r];
+        $res = insert($q, $values, 'is');
+        echo $res;
     }
 }
