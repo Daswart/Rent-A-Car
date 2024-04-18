@@ -36,7 +36,7 @@ if (isset($_POST['get_all_cars'])) {
         } else {
             $status = "<button onclick='toggle_status($row[sr_no], 1)' class='btn btn-danger btn-sm shadow-none'>niet beschikbaar</button>";
         }
-        $description = strlen($row['description']) > 100 ? substr($row['description'], 0, 100) . "..." : $row['description'];
+        $description = strlen($row['description']) > 55 ? substr($row['description'], 0, 55) . "..." : $row['description'];
         $data .= "
         <tr class='align-middle'>
             <td>$i</td>
