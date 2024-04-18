@@ -403,10 +403,8 @@ adminLogin();
             xhr.send(data);
         }
 
-        function remove_car(car_id) {
-
-            if (confirm("Are you sure, you want to delete this room")) {
-
+        function remove_car(car_id, brand, type, license_plate) {
+            if (confirm("Weet je zeker dat je de " + brand + " " + type +  " met kentekeken " + license_plate +  " wilt verwijderen?")) {
                 let data = new FormData();
                 data.append('car_id', car_id);
                 data.append('remove_car', '');

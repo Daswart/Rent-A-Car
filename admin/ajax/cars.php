@@ -53,7 +53,7 @@ if (isset($_POST['get_all_cars'])) {
                  <button type='button' onclick=\"car_images($row[sr_no], '$row[brand]', '$row[type]', '$row[license_plate]' )\"  class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#car_images'>
                     <i class='bi bi-images'></i>
                 </button>
-                  <button type='button' onclick='remove_car($row[sr_no])' class='btn btn-danger shadow-none btn-sm'>
+                  <button type='button' onclick=\"remove_car($row[sr_no], '$row[brand]', '$row[type]', '$row[license_plate]')\" class='btn btn-danger shadow-none btn-sm'>
                     <i class='bi bi-trash'></i>
                 </button>
             </td>
