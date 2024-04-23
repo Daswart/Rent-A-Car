@@ -30,11 +30,11 @@
         <div class="h-line bg-dark"></div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
             <!-- Sidenav -->
-            <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 px-0">
+            <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 ps-4">
                 <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow">
                     <div class="container-fluid flex-lg-column align-items-stretch">
                         <h4 class="mt-2">FILTERS</h4>
@@ -56,60 +56,12 @@
 
             <!-- Rooms -->
             <div class="col-lg-9 col-md-12 px-4">
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 p-3 align-items-center">
-                        <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
-                            <img src="images/cars/1.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-5 px-lg-3 px-md-3 px-0">
-                            <h5>Auto naam</h5>
-                            <div class="merk mb-3">
-                                <h6 class="mb-1">Merk</h6>
-                                <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                    Merk naam
-                                </span>
-                            </div>
-                            <div class="type mb-3">
-                                <h6 class="mb-1">Type</h6>
-                                <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                    Type naam
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mt-lg-0 mt-md-0 mt-4 text-align-center">
-                            <h6 class="mb-4">$200 per dag</h6>
-                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Reserveer nu</a>
-                            <a href="#" class="btn btn-sm w-100 btn-outline-dark shadow-none">Meer info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 p-3 align-items-center">
-                        <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
-                            <img src="images/cars/1.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-5 px-lg-3 px-md-3 px-0">
-                            <h5>Auto naam</h5>
-                            <div class="merk mb-3">
-                                <h6 class="mb-1">Merk</h6>
-                                <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                    Merk naam
-                                </span>
-                            </div>
-                            <div class="type mb-3">
-                                <h6 class="mb-1">Type</h6>
-                                <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                    Type naam
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mt-lg-0 mt-md-0 mt-4 text-align-center">
-                            <h6 class="mb-4">$200 per dag</h6>
-                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Reserveer nu</a>
-                            <a href="#" class="btn btn-sm w-100 btn-outline-dark shadow-none">Meer info</a>
-                        </div>
-                    </div>
-                </div>
+                <?php
+
+                // get rooms
+                $room_res = select("SELECT * FROM `cars` WHERE `status`=? AND `removed`=?", [1, 0], 'ii');
+                
+                ?>
                 <div class="card mb-4 border-0 shadow">
                     <div class="row g-0 p-3 align-items-center">
                         <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
