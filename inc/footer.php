@@ -1,7 +1,7 @@
 <div class="container-fluid bg-white mt-5">
     <div class="row">
         <div class="col-lg-4 p-4">
-            <h3 class="h-font fw-bold mb-2">TJ HOTEL</h3>
+            <h3 class="h-font fw-bold mb-2">RENT-A-CAR</h3>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Ullam doloribus aperiam facilis atque. Laboriosam aspernatur
             corrupti vero, facilis maiores, veniam aperiam nam fuga maxime
@@ -10,13 +10,13 @@
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Links</h5>
             <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Home</a><br>
-            <a href="rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Rooms</a><br>
-            <a href="facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Facilities</a><br>
-            <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Contact us</a><br>
-            <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">About</a>
+            <a href="rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Auto's</a><br>
+            <a href="facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Busjes</a><br>
+            <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Contact</a><br>
+            <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none" href="">Over ons </a>
         </div>
         <div class="col-lg-4 p-4">
-            <h5 class="mb-3">Follow us</h5>
+            <h5 class="mb-3">Volg ons</h5>
             <?php
             if ($contact_r['tw'] != '') {
                 echo <<<data

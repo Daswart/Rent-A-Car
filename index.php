@@ -103,6 +103,8 @@
                     $car_thumb = CARS_IMG_PATH . $thumb_res['image'];
                 }
 
+                $description = strlen($car_data['description']) > 100 ? substr($car_data['description'], 0, 100) . "..." : $car_data['description'];
+
                 // print car card
                 echo <<<data
                     <div class="col-lg-4 col-md-6 my-3">
@@ -119,7 +121,7 @@
                             </div>
                                 <div class="mb-4">
                             <h6>Informatie</h6>
-                            <p>$car_data[description]</p>
+                            <p> $description</p>
                             </div>
                                 <div class="d-flex justify-content-evenly mb-2">
                                 <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer nu</a>
