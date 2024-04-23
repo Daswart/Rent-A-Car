@@ -18,6 +18,12 @@
         .bi-instagram:hover {
             color: #fa7e1e;
         }
+
+        .car-image{
+            height: 300px;
+            width: 600px;
+            object-fit: cover; 
+        }
     </style>
 </head>
 
@@ -54,41 +60,53 @@
                 </nav>
             </div>
 
-            <!-- Rooms -->
+            <!-- Cars -->
             <div class="col-lg-9 col-md-12 px-4">
                 <?php
 
-                // get rooms
-                $room_res = select("SELECT * FROM `cars` WHERE `status`=? AND `removed`=?", [1, 0], 'ii');
-                
-                ?>
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 p-3 align-items-center">
-                        <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
-                            <img src="images/cars/1.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-5 px-lg-3 px-md-3 px-0">
-                            <h5>Auto naam</h5>
-                            <div class="merk mb-3">
-                                <h6 class="mb-1">Merk</h6>
-                                <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                    Merk naam
+                // get cars
+                $car_res = select("SELECT * FROM `cars` WHERE `status`=? AND `removed`=?", [1, 0], 'ii');
+                while ($car_data = mysqli_fetch_assoc($car_res)) {
+
+                    // get thumbnail of image
+                    $car_thumb = CARS_IMG_PATH . "thumbnail.jpg";
+                    $thumb_q = mysqli_query($con, "SELECT * FROM `car_images` 
+                    WHERE `car_id` = $car_data[sr_no] 
+                    AND `thumb`= '1'");
+                    if (mysqli_num_rows($thumb_q) > 0) {
+                        $thumb_res = mysqli_fetch_assoc($thumb_q);
+                        $car_thumb = CARS_IMG_PATH . $thumb_res['image'];
+                    }
+
+                    echo <<<data
+                    <div class="card mb-4 border-0 shadow">
+                        <div class="row g-0 p-3 align-items-center">
+                            <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
+                            <img src="$car_thumb" class="img-fluid rounded car-image">
+                            </div>
+                            <div class="col-md-5 px-lg-3 px-md-3 px-0">
+                            <h5 class="mb-3">$car_data[brand] $car_data[type] </h5>
+                            <div class="kenteken mb-3">
+                            <h6 class="mb-1">Kenteken</h6>
+                            <span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
+                                  $car_data[license_plate]
                                 </span>
                             </div>
-                            <div class="type mb-3">
-                                <h6 class="mb-1">Type</h6>
-                                <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                    Type naam
-                                </span>
+                            <div class="mb-4">
+                            <h6>Informatie</h6>
+                            <p>$car_data[description]</p>
                             </div>
                         </div>
                         <div class="col-md-2 mt-lg-0 mt-md-0 mt-4 text-align-center">
-                            <h6 class="mb-4">$200 per dag</h6>
-                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Reserveer nu</a>
-                            <a href="#" class="btn btn-sm w-100 btn-outline-dark shadow-none">Meer info</a>
+                            <h6 class="mb-4">$$car_data[cost_per_day] per dag</h6>
+                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Boek Nu</a>
+                            <a href="car_details.php?id=$car_data[sr_no]" class="btn btn-sm w-100 btn-outline-dark shadow-none">Meer info</a>
                         </div>
+                            </div>
                     </div>
-                </div>
+                    data;
+                }
+                ?>
             </div>
 
         </div>
