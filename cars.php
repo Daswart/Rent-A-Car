@@ -19,10 +19,10 @@
             color: #fa7e1e;
         }
 
-        .car-image{
+        .car-image {
             height: 300px;
             width: 600px;
-            object-fit: cover; 
+            object-fit: cover;
         }
     </style>
 </head>
@@ -65,7 +65,7 @@
                 <?php
 
                 // get cars
-                $car_res = select("SELECT * FROM `cars` WHERE `status`=? AND `removed`=?", [1, 0], 'ii');
+                $car_res = select("SELECT * FROM `cars` WHERE `status`=? AND `removed`=? ORDER BY `sr_no` DESC", [1, 0], 'ii');
                 while ($car_data = mysqli_fetch_assoc($car_res)) {
 
                     // get thumbnail of image

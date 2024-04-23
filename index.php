@@ -20,6 +20,12 @@
                 padding: 0 35px;
             }
         }
+
+        .car-image {
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+        }
     </style>
 
 </head>
@@ -75,84 +81,59 @@
     </div>
 
     <!-- Onze auto's-->
-    <h2 class="mt-5 pt-4 text-center fw-bold h-font">ONZE AUTO'S</h2>
+    <h2 class="mt-5 pt-4 text-center fw-bold h-font">ONZE DUURSTE AUTO'S</h2>
     <div class="h-line bg-dark mb-4"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
-                    <img src="images/cars/1.png" class="card-img-top">
-                    <div class="card-body">
-                        <h5>Auto naam</h5>
-                        <h6 class="mb-4">$200 per dag</h6>
-                        <div class="merk mb-4">
-                            <h6 class="mb-1">Merk</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                Merk Naam
-                        </div>
-                        <div class="type mb-4">
-                            <h6 class="mb-1">Type</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                Type naam
-                            </span>
-                        </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer nu</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
-                    <img src="images/cars/1.png" class="card-img-top">
-                    <div class="card-body">
-                        <h5>Auto naam</h5>
-                        <h6 class="mb-4">$200 per dag</h6>
-                        <div class="merk mb-4">
-                            <h6 class="mb-1">Merk</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                Merk Naam
-                        </div>
-                        <div class="type mb-4">
-                            <h6 class="mb-1">Type</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                Type naam
-                            </span>
-                        </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer nu</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
+            <?php
+
+            // get cars 
+            $car_res = select("SELECT * FROM `cars` WHERE `status`=? AND `removed`=? ORDER BY `cost_per_day` DESC LIMIT 3", [1, 0], 'ii');
+
+            while ($car_data = mysqli_fetch_assoc($car_res)) {
+
+                // get thumbnail of image
+                $car_thumb = CARS_IMG_PATH . "thumbnail.jpg";
+                $thumb_q = mysqli_query($con, "SELECT * FROM `car_images` 
+                    WHERE `car_id` = $car_data[sr_no] 
+                    AND `thumb`= '1'");
+
+                if (mysqli_num_rows($thumb_q) > 0) {
+                    $thumb_res = mysqli_fetch_assoc($thumb_q);
+                    $car_thumb = CARS_IMG_PATH . $thumb_res['image'];
+                }
+
+                // print car card
+                echo <<<data
+                    <div class="col-lg-4 col-md-6 my-3">
+                    <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                        <img src="$car_thumb" class="card-img-top car-image">
+                        <div class="card-body">
+                            <h5>$car_data[brand] $car_data[type]</h5>
+                            <h6 class="mb-4"><span style='color: #2EC1AC'>$$car_data[cost_per_day]</span> per dag</h6>
+                            <div class="kenteken mb-4">
+                                <h6 class="mb-1">Kenteken</h6>
+                                 <span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
+                                  $car_data[license_plate]
+                                </span>
+                            </div>
+                                <div class="mb-4">
+                            <h6>Informatie</h6>
+                            <p>$car_data[description]</p>
+                            </div>
+                                <div class="d-flex justify-content-evenly mb-2">
+                                <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer nu</a>
+                                <a href="car_details.php?id=$car_data[sr_no]" class="btn btn-sm btn-outline-dark shadow-none">Meer Info</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
-                    <img src="images/cars/1.png" class="card-img-top">
-                    <div class="card-body">
-                        <h5>Auto naam</h5>
-                        <h6 class="mb-4">$200 per dag</h6>
-                        <div class="merk mb-4">
-                            <h6 class="mb-1">Merk</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                Merk Naam
-                        </div>
-                        <div class="type mb-4">
-                            <h6 class="mb-1">Type</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                Type naam
-                            </span>
-                        </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer nu</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Meer info</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    data;
+            }
+            ?>
+
             <div class="col-lg-12 text-center mt-5">
-                <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Meer auto's >>></a>
+                <a href="cars.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Meer auto's >>></a>
             </div>
         </div>
     </div>
@@ -241,7 +222,7 @@
     </div>
 
     <!-- Recensies -->
-    <h2 class="mt-5 pt-4 text-center fw-bold h-font">RECENSIES</h2>
+    <!-- <h2 class="mt-5 pt-4 text-center fw-bold h-font">RECENSIES</h2>
     <div class="h-line bg-dark mb-4"></div>
     <div class="container mt-5">
         <div class="swiper swiper-testimonials">
@@ -297,7 +278,7 @@
         <div class="col-lg-12 text-center mt-5">
             <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Meer >>></a>
         </div>
-    </div>
+    </div> -->
 
     <!-- Contact -->
     <?php
