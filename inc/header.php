@@ -76,10 +76,10 @@
    </div>
 
    <!-- Registreren Modal -->
-   <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
        <div class="modal-dialog modal-lg">
            <div class="modal-content">
-               <form>
+               <form id="register-form">
                    <div class="modal-header">
                        <h5 class="modal-title d-flex align-items-center">
                            <i class="bi bi-person-lines-fill fs-3 me-2"></i>
@@ -92,44 +92,48 @@
                            <div class="row">
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Naam</label>
-                                   <input type="text" class="form-control shadow-none">
+                                   <input name="name" type="text" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Email</label>
-                                   <input type="email" class="form-control shadow-none">
+                                   <input name="email" type="email" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Telefoon nummer</label>
-                                   <input type="number" class="form-control shadow-none">
+                                   <input name="phonenum" type="number" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Afbeelding</label>
-                                   <input type="file" class="form-control shadow-none">
+                                   <input name="profile" type="file" accept=".jpg, .jpeg, .png, .webp" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Postcode</label>
-                                   <input type="text" class="form-control shadow-none">
+                                   <input name="zip-code" type=" text" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Straat + huisnummer</label>
-                                   <input type="text" class="form-control shadow-none">
+                                   <input name="address" type="text" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Plaats</label>
-                                   <input type="text" class="form-control shadow-none">
+                                   <input name="residence" type="text" class="form-control shadow-none" required>
+                               </div>
+                               <div class="col-md-6 ps-0 mb-3">
+                                   <label class="form-label">Geboortedatum</label>
+                                   <input name="dob" type="date" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Wachtwoord</label>
-                                   <input type="password" class="form-control shadow-none">
+                                   <input name="pass" type="password" class="form-control shadow-none" required>
                                </div>
                                <div class="col-md-6 ps-0 mb-3">
                                    <label class="form-label">Bevestig Wachtwoord</label>
-                                   <input type="password" class="form-control shadow-none">
+                                   <input name="cpass" type="password" class="form-control shadow-none" required>
                                </div>
                            </div>
                        </div>
                        <div class="text-center my-1">
-                           <button type="submit" class="btn btn-dark shadow-none">REGISTER</button>
+                           <button type="submit" class="btn btn-dark shadow-none">REGISTREREN</button>
                        </div>
                    </div>
                </form>
