@@ -26,4 +26,14 @@ if (isset($_POST['register'])) {
         exit;
     }
 
+    $img = uploadUserImage($_FILES['profile']);
+
+    if ($img == 'inv_img') {
+        echo 'inv_img';
+        exit;
+    } else if ($img == 'upd_failed') {
+        echo 'upd_failed';
+        exit;
+    }
+
 }

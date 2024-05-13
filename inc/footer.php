@@ -88,6 +88,8 @@
                 console.log('Email is al gergistreerd!');
             } else if (this.responseText == 'phone_already') {
                 console.log('Telefoon nummer is al geregistreerd!');
+            } else {
+                console.log('Afbeelding uploaden gelukt!');
             }
         }
 
