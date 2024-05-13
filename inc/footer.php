@@ -65,9 +65,9 @@
         data.append('name', register_form.elements['name'].value);
         data.append('email', register_form.elements['email'].value);
         data.append('phonenum', register_form.elements['phonenum'].value);
-        data.append('pincode', register_form.elements['zip-code'].value);
+        data.append('zip-code', register_form.elements['zip-code'].value);
         data.append('address', register_form.elements['address'].value);
-        data.append('pincode', register_form.elements['residence'].value);
+        data.append('residence', register_form.elements['residence'].value);
         data.append('dob', register_form.elements['dob'].value);
         data.append('pass', register_form.elements['pass'].value);
         data.append('cpass', register_form.elements['cpass'].value);
@@ -88,8 +88,10 @@
                 console.log('Email is al gergistreerd!');
             } else if (this.responseText == 'phone_already') {
                 console.log('Telefoon nummer is al geregistreerd!');
-            } else {
-                console.log('Afbeelding uploaden gelukt!');
+            } else if (this.responseText == 'mail_failed') {
+                console.log('Mail verzenden niet gelukt!');
+            } else if (this.responseText == 'ins_failed') {
+                console.log('Registratie niet gelukt!');
             }
         }
 

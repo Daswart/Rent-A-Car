@@ -2,6 +2,48 @@
 require('../admin/inc/db_config.php');
 require('../admin/inc/essentials.php');
 
+require('../inc/PHPMailer/PHPMailer.php');
+require('../inc/PHPMailer/SMTP.php');
+require('../inc/PHPMailer/Exception.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+function send_mail($email, $name, $token)
+{
+    //Server settings
+    $mail = new PHPMailer(true);
+    $mail->SMTPDebug = 3;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'kensherry18@gmail.com';               //SMTP username
+    $mail->Password   = 'hljx jyaw jooc joos';                            //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+
+    $mail->setFrom('kensherry18@gmail.com', 'Ken Sherry');
+    $mail->addAddress($email, $name);
+
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Account Verification Link';
+    $mail->Body    = "Click the link to confirm email: <br> 
+                    <a href='" . SITE_URL . "email_confirm.php?email=$email&token=$token" . "'>
+                    CLICK ME
+                    </a>
+                    ";
+
+
+    if ($mail->send()) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+
 if (isset($_POST['register'])) {
 
     $data = filteration($_POST);
@@ -36,4 +78,27 @@ if (isset($_POST['register'])) {
         exit;
     }
 
+    // send confirmation link to user's email;
+    $token = bin2hex(random_bytes(16));
+
+    // if (!send_mail($data['email'], $data['name'], $token)) {
+    //     echo 'mail_failed';
+    //     exit;
+    // }
+
+    $enc_pass = password_hash($data['pass'], PASSWORD_BCRYPT);
+
+    $query = "INSERT INTO `user_cred` (`name`, `email`, `zip-code`, `address`, `phonenum`, `residence`, 
+  `dob`, `password`, `profile`, `token`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+    $values = [
+        $data['name'], $data['email'], $data['zip-code'], $data['address'], $data['phonenum'], $data['residence'],
+        $data['dob'], $enc_pass, $img, $token
+    ];
+
+    if (insert($query, $values, 'ssssssssss')) {
+        echo 1;
+    } else {
+        echo 'ins_failed';
+    }
 }
