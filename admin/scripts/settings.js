@@ -59,10 +59,10 @@
               modal.hide();
 
               if (this.responseText == 1) {
-                  alert('success', 'Changes saved!');
+                  alert('success', 'Wijzigingen opgeslagen!');
                   get_general()
               } else {
-                  alert('error', 'No Changes made!');
+                  alert('error', 'Wijzigingen niet opgeslagen!');
               }
 
           }
@@ -78,9 +78,9 @@
           xhr.onload = function() {
 
               if (this.responseText == 1 && general_data.shutdown == 0) {
-                  alert('success', 'Site has been shutdown!!');
+                  alert('success', 'Site is uitgeschakeld!!');
               } else {
-                  alert('success', 'Shutdown mode off!!');
+                  alert('success', 'Site is ingeschakeld    !!');
               }
               get_general()
           }

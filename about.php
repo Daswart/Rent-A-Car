@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TH Hotel - ABOUT</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <?php require('inc/links.php') ?>
+    <title><?php echo $settings_r['site_title'] ?> - OVER ONS</title>
     <style>
         .box {
             border-top-color: var(--teal) !important;

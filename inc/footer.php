@@ -1,11 +1,10 @@
 <div class="container-fluid bg-white mt-5">
     <div class="row">
         <div class="col-lg-4 p-4">
-            <h3 class="h-font fw-bold mb-2">RENT-A-CAR</h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Ullam doloribus aperiam facilis atque. Laboriosam aspernatur
-            corrupti vero, facilis maiores, veniam aperiam nam fuga maxime
-            animi architecto quibusdam, libero quasi incidunt.
+            <h3 class="h-font fw-bold fs-3 mb-2"><?php echo $settings_r['site_title'] ?></h3>
+            <p>
+                <?php echo $settings_r['site_about'] ?>
+            </p>
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Links</h5>
