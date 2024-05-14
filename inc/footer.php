@@ -55,6 +55,42 @@
         }
     }
 
+    function alert(type, msg, position = 'body') {
+        let bs_class = (type == 'success') ? 'alert-success' : 'alert-danger';
+        let element = document.createElement('div');
+        element.innerHTML = `<div class="alert ${bs_class} alert-dismissible fade show" role="alert">
+        <strong class="me-3">${msg}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>`;
+
+        if (position == 'body') {
+            document.body.append(element);
+            element.classList.add('custom-alert')
+        } else {
+            document.getElementById(position).appendChild(element);
+        }
+        setTimeout(remAlert, 3000);
+    }
+
+    function remAlert() {
+        document.getElementsByClassName('alert')[0].remove();
+    }
+
+    function setActive() {
+        navbar = document.getElementById('nav-bar');
+        let a_tags = navbar.getElementsByTagName('a');
+
+        for (i = 0; i < a_tags.length; i++) {
+            let file = a_tags[i].href.split('/').pop();
+            let file_name = file.split('.')[0];
+
+            if (document.location.href.indexOf(file_name) >= 0) {
+                a_tags[i].classList.add('active');
+            }
+        }
+    }
+
+
     let register_form = document.getElementById('register-form')
 
     register_form.addEventListener('submit', (e) => {
@@ -82,16 +118,23 @@
         xhr.open("POST", "ajax/login_register.php", true);
 
         xhr.onload = function() {
-            if (this.responseText == "pass_mismatch") {
-                console.log('Wachtwoorden zijn niet gelijk!');
+            if (this.responseText == 'pass_mismatch') {
+                alert('error', "Wachtwoorden komen niet overeen!");
             } else if (this.responseText == 'email_already') {
-                console.log('Email is al gergistreerd!');
+                alert('error', "Email is al geregistreerd!");
             } else if (this.responseText == 'phone_already') {
-                console.log('Telefoon nummer is al geregistreerd!');
+                alert('error', "Telefoonnummer is al geregistreerd!");
+            } else if (this.responseText == 'inv_img') {
+                alert('error', "Alleen afbeelding van het type JPG, WEBP, PNG toegestaan!");
+            } else if (this.responseText == 'upd_failed') {
+                alert('error', "Afbeelding uploaden mislukt!");
             } else if (this.responseText == 'mail_failed') {
-                console.log('Mail verzenden niet gelukt!');
+                alert('error', "Kan bevestigingsmail niet verzenden!");
             } else if (this.responseText == 'ins_failed') {
-                console.log('Registratie niet gelukt!');
+                alert('error', "Registratie mislukt!");
+            } else {
+                alert('success', "Registratie gelukt! Verificatielink naar email verstuurd.");
+                register_form.reset();
             }
         }
 

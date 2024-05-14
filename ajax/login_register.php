@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-function send_mail($email, $name, $token)
+function send_mail($uemail, $name, $token)
 {
     //Server settings
     $mail = new PHPMailer(true);
@@ -25,13 +25,13 @@ function send_mail($email, $name, $token)
 
 
     $mail->setFrom('kensherry18@gmail.com', 'Ken Sherry');
-    $mail->addAddress($email, $name);
+    $mail->addAddress($uemail, $name);
 
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Account Verification Link';
-    $mail->Body    = "Click the link to confirm email: <br> 
-                    <a href='" . SITE_URL . "email_confirm.php?email=$email&token=$token" . "'>
-                    CLICK ME
+    $mail->Subject = 'Account Verificatie Link';
+    $mail->Body    = "Klik op de link om je account te bevesrigen: <br> 
+                    <a href='" . SITE_URL . "email_confirm.php?email_confirmation&email=$uemail&token=$token" . "'>
+                    KLIK HIER
                     </a>
                     ";
 
@@ -81,10 +81,10 @@ if (isset($_POST['register'])) {
     // send confirmation link to user's email;
     $token = bin2hex(random_bytes(16));
 
-    // if (!send_mail($data['email'], $data['name'], $token)) {
-    //     echo 'mail_failed';
-    //     exit;
-    // }
+    if (!send_mail($data['email'], $data['name'], $token)) {
+        echo 'mail_failed';
+        exit;
+    }
 
     $enc_pass = password_hash($data['pass'], PASSWORD_BCRYPT);
 
