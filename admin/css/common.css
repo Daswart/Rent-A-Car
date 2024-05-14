@@ -52,7 +52,7 @@
   #dashboard-menu {
     position: fixed;
     height: 100%;
-    z-index: 11;
+    z-index: 2000;
   }
 
   #admin-nav {

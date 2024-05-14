@@ -83,15 +83,15 @@
                         <div class="row">
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Naam</label>
-                                <input name="name" value="Daan" type="text" class="form-control shadow-none" required>
+                                <input name="name" type="text" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Email</label>
-                                <input name="email" value="daan@mail.com" type="email" class="form-control shadow-none" required>
+                                <input name="email" type="email" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Telefoon nummer</label>
-                                <input name="phonenum" value="0681701480" type="number" class="form-control shadow-none" required>
+                                <input name="phonenum" type="number" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Afbeelding</label>
@@ -99,15 +99,15 @@
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Postcode</label>
-                                <input name="zip-code" value="1326 BA" type="text" class="form-control shadow-none" required>
+                                <input name="zip-code" type="text" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Straat + huisnummer</label>
-                                <input name="address" value="iepenstraat 4" type="text" class="form-control shadow-none" required>
+                                <input name="address"  type="text" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Plaats</label>
-                                <input name="residence" value="Almere" type="text" class="form-control shadow-none" required>
+                                <input name="residence" type="text" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Geboortedatum</label>
