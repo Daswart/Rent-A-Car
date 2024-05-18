@@ -1,19 +1,32 @@
 <?php
 
-//database credentials
-$hname = 'localhost';
-$uname = 'root';
-$pass = '';
-$db = 'rent-a-car';
+// database credentials local
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
-// Conntectopn to database
+    $hname = 'localhost';
+    $uname = 'root';
+    $pass = '';
+    $db = 'rent-a-car';
+}
+
+// database credentials online
+else if($_SERVER['SERVER_NAME'] == 'daanswart.nl'){
+    
+    $hname = 'daansw-web.db.transip.me';
+    $uname = 'daansw_Admin';
+    $pass = 'HAHA123';
+    $db = 'daansw_web';
+
+}
+
+// Connection to database
 $con = mysqli_connect($hname, $uname, $pass, $db);
 
 // Connection error
 if (!$con) {
     die('Cannot Connect to Database ' . mysqli_connect_error());
 }
-// Data filtaration
+// Data filteration
 function filteration($data)
 {
     foreach ($data as $key => $value) {
@@ -30,9 +43,9 @@ function selectAll($table)
 {
     $con = $GLOBALS['con'];
 
-    if($table == 'cars'){
+    if ($table == 'cars') {
         $res = mysqli_query($con, "SELECT * FROM $table ORDER BY `status` DESC, `brand`");
-    }else{
+    } else {
         $res = mysqli_query($con, "SELECT * FROM $table ORDER BY `sr_no`");
     }
     return $res;
