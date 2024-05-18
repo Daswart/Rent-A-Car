@@ -29,7 +29,7 @@ function send_mail($uemail, $name, $token)
 
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Account Verificatie Link';
-    $mail->Body    = "Klik op de link om je account te bevesrigen: <br> 
+    $mail->Body    = "Klik op de link om je account te bevestigen: <br> 
                     <a href='" . SITE_URL . "email_confirm.php?email_confirmation&email=$uemail&token=$token" . "'>
                     KLIK HIER
                     </a>
