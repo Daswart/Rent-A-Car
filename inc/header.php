@@ -25,6 +25,10 @@
 
             </ul>
             <div class="d-flex">
+                <?php
+                session_start();
+                print_r($_SESSION);
+                ?>
                 <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
                     Inloggen
                 </button>
@@ -40,7 +44,7 @@
 <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="login-form">
                 <div class="modal-header">
                     <h5 class="modal-title d-flex align-items-center">
                         <i class="bi bi-person-circle fs-3 me-2"></i> Inloggen klant
@@ -50,11 +54,11 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control shadow-none">
+                        <input type="email" name="email_mob" class="form-control shadow-none">
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Wachtwoord</label>
-                        <input type="password" class="form-control shadow-none">
+                        <input type="password" name="pass" class="form-control shadow-none">
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <button class="btn btn-dark shadwon-none">INLOGGEN</button>
@@ -103,7 +107,7 @@
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Straat + huisnummer</label>
-                                <input name="address"  type="text" class="form-control shadow-none" required>
+                                <input name="address" type="text" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Plaats</label>

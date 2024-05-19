@@ -2,7 +2,7 @@
 
 
 // frontend purpose data (local)
-if ($_SERVER['SERVER_NAME'] == 'localhost') {
+if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0.1') {
     define('SITE_URL', 'http://127.0.0.1/Rent-A-Car/');
 }
 
