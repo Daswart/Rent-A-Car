@@ -14,6 +14,7 @@ if ($_SERVER['SERVER_NAME'] == 'daanswart.nl') {
 define('ABOUT_IMAGE_PATH', SITE_URL . 'images/about/');
 define('CAROUSEL_IMG_PATH', SITE_URL . 'images/carousel/');
 define('CARS_IMG_PATH', SITE_URL . 'images/cars/');
+define('USERS_IMG_PATH', SITE_URL . 'images/users/');
 
 //backend upload proces needs this data
 

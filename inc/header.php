@@ -26,15 +26,33 @@
             </ul>
             <div class="d-flex">
                 <?php
-                session_start();
-                print_r($_SESSION);
-                ?>
-                <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+
+                    $path = USERS_IMG_PATH;
+                    echo <<<data
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-dark shadow-none dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                        <img src="$path$_SESSION[uPic]" style="width: 25px; height: 25px; border-radius: 50%;" class="me-1">
+                        $_SESSION[uName]
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                    <li><a class="dropdown-item" href="profile.php">Profiel</a></li>
+                    <li><a class="dropdown-item" href="bookings.php">Reserveringen</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Uitloggen</a></li>
+                    </ul>
+                    </div>
+                    data;
+                } else {
+                    echo <<<data
+                    <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
                     Inloggen
-                </button>
-                <button type="button" class="btn btn-outline-dark shadow-none me-lg-2 me-3" data-bs-toggle="modal" data-bs-target="#registerModal">
+                    </button>
+                    <button type="button" class="btn btn-outline-dark shadow-none me-lg-2 me-3" data-bs-toggle="modal" data-bs-target="#registerModal">
                     Registreren
-                </button>
+                    </button>
+                    data;
+                }
+                ?>
             </div>
         </div>
     </div>
