@@ -6,7 +6,7 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.png">
 
   <?php
-  session_start();
+  // session_start();
   date_default_timezone_set("Europe/Amsterdam");
 
   require('admin/inc/db_config.php');

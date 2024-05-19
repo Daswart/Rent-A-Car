@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 require('../admin/inc/db_config.php');
 require('../admin/inc/essentials.php');
 
@@ -125,7 +128,6 @@ if (isset($_POST['login'])) {
             if (!password_verify($data['pass'], $u_fetch['password'])) {
                 echo 'invalid_pass';
             } else {
-                session_start();
                 $_SESSION['login'] = true;
                 $_SESSION['uId'] = $u_fetch['sr_no'];
                 $_SESSION['uName'] = $u_fetch['name'];
