@@ -1,0 +1,15 @@
+<<< START CHECK FOR NEW PASSWORD FUNCTION 
+function isPasswordTooSimilar($oldPassword, $newPassword, $threshold = 3) {
+    $distance = levenshtein($oldPassword, $newPassword);
+    return $distance <= $threshold;
+}
+
+$oldPassword = 'cookie23';
+$newPassword = 'cookie24';
+
+if (isPasswordTooSimilar($oldPassword, $newPassword)) {
+    echo "<script>alert('The new password is too similar to the old password.');</script>";
+} else {
+    echo "<script>alert('The new password is acceptable.');</script>";
+}
+END CHECK FOR NEW PASSWORD FUNCTION >>>
