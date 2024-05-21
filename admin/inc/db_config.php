@@ -1,26 +1,29 @@
 <?php
 
 // database credentials local
-if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0.1' ) {
+if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0.1') {
 
-    $hname = 'localhost';
-    $uname = 'root';
-    $pass = '';
-    $db = 'rent-a-car';
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'rent-a-car');
+    define('DB_PORT', 3308);
+
+    // Connection to local database
+    $con = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
 }
 
 // database credentials online
-else if($_SERVER['SERVER_NAME'] == 'daanswart.nl'){
-    
+else if ($_SERVER['SERVER_NAME'] == 'daanswart.nl') {
+
     $hname = 'daansw-web.db.transip.me';
     $uname = 'daansw_Admin';
     $pass = 'HAHA123';
     $db = 'daansw_web';
 
+    // Connection to online database
+    $con = mysqli_connect($hname, $uname, $pass, $db);
 }
-
-// Connection to database
-$con = mysqli_connect($hname, $uname, $pass, $db);
 
 // Connection error
 if (!$con) {
