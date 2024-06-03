@@ -16,6 +16,12 @@
                          <a class="nav-link text-white" href="dashboard.php">Dashboard</a>
                      </li>
                      <li class="nav-item">
+                         <a class="nav-link text-white" href="users.php">Klanten</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link text-white" href="user_queries.php">Berichten</a>
+                     </li>
+                     <li class="nav-item">
                          <a class="nav-link text-white" href="cars.php">Auto's</a>
                      </li>
                      <li class="nav-item">
@@ -23,9 +29,6 @@
                      </li>
                      <li class="nav-item">
                          <a class="nav-link text-white" href="carousel.php">Carousel</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link text-white" href="user_queries.php">Berichten</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link text-white" href="settings.php">Instellingen</a>
