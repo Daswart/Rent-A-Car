@@ -38,15 +38,17 @@ adminLogin();
                                 <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
+                                        <th scope="col">Naam</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">Phone no.</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">DOB</th>
-                                        <th scope="col">Verified</th>
+                                        <th scope="col">Telefoonnummer</th>
+                                        <th scope="col">Adres</th>
+                                        <th scope="col">Postcode</th>
+                                        <th scope="col">Woonplaats</th>
+                                        <th scope="col">Geboortedatum</th>
+                                        <th scope="col">Geverifieerd</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Datum</th>
+                                        <th scope="col">Actie</th>
                                     </tr>
                                 </thead>
                                 <tbody id="users-data">

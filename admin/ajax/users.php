@@ -12,47 +12,46 @@ if (isset($_POST['get_users'])) {
     $data = "";
 
     while ($row = mysqli_fetch_assoc($res)) {
-        $user_id = $row['sr_no'];
-        $res2 = mysqli_query($con, "SELECT * FROM `room_images` WHERE `room_id` = '$room_id' AND `thumb` = 1");
-        if(mysqli_num_rows($res2) > 0 ){
-            $row2 = mysqli_fetch_assoc($res2);
-            $image = $row2['image'];
-        }else{
-            $image = 'thumbnail.jpg';
+
+        $dob = date('d-m-Y', strtotime($row['dob']));
+
+        $del_btn = "<button type='button' onclick='remove_user($row[sr_no])' class='btn btn-danger shadow-none btn-sm'>
+        <i class='bi bi-trash'></i>
+        </button>";
+
+        $verified = '<span class="badge bg-warning text-dark"><i class="bi bi-x-lg"></i></span>';
+
+        if ($row['is_verified']) {
+            $verified = '<span class="badge bg-success text-dark"><i class="bi bi-check-lg"></i></span>';
+            $del_btn = '';
         }
-        if ($row['status'] == 1) {
-            $status = "<button onclick='toggle_status($row[sr_no], 0)' class='btn btn-dark btn-sm shadow-none'>active</button>";
-        } else {
-            $status = "<button onclick='toggle_status($row[sr_no], 1)' class='btn btn-warning btn-sm shadow-none'>inactive</button>";
+
+        $status = "<button onclick='toggle_status($row[sr_no], 0)' class='btn btn-dark btn-sm shadow-none'>actief</button>";
+
+        if (!$row["status"]) {
+            $status =  "<button onclick='toggle_status($row[sr_no], 1)' class='btn btn-danger btn-sm shadow-none'>inactief</button>";
         }
+
+        $date = date('d-m-Y', strtotime($row['datentime']));
+        $zipcode = "zip-code";
         $data .= "
-        <tr class='align-middle'>
+        <tr>
             <td>$i</td>
-             <td><img src='$path$image' alt='' style='width:150px;'></td>
-            <td>$row[name]</td>
-            <td>$row[area] sq. ft.</td>
             <td>
-            <span class='badge rounded pill bg-light text-dark'>
-            Adult: $row[adult]
-            </span><br>
-            <span class='badge rounded pill bg-light text-dark'>
-            Children: $row[children]
-            </span>    
+            <img src='$path$row[profile]' width='55px' height='55px' style='object-fit: cover;'>
+            <br>
+            $row[name]
             </td>
-            <td>$$row[price]</td>
-            <td>$row[quantity]</td>
+            <td>$row[email]</td>
+            <td>$row[phonenum]</td>
+            <td>$row[address]</td>
+            <td>$row[$zipcode]</td>
+            <td>$row[residence]</td>
+            <td>$dob</td>
+            <td>$verified</td>
             <td>$status</td>
-            <td>
-                <button type='button' onclick='edit_details($row[sr_no])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit_room'>
-                    <i class='bi bi-pencil-square'></i>
-                </button>
-                <button type='button' onclick=\"room_images($row[sr_no], '$row[name]')\" class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#room_images'>
-                    <i class='bi bi-images'></i>
-                </button>
-                <button type='button' onclick='remove_room($row[sr_no])' class='btn btn-danger shadow-none btn-sm'>
-                    <i class='bi bi-trash'></i>
-                </button>
-            </td>
+            <td>$date</td>
+            <td>$del_btn</td>   
         </tr>";
         $i++;
     }
@@ -60,38 +59,29 @@ if (isset($_POST['get_users'])) {
     echo $data;
 }
 
-// if (isset($_POST['toggle_status'])) {
+if (isset($_POST['toggle_status'])) {
 
-//     $frm_data = filteration($_POST);
+    $frm_data = filteration($_POST);
 
-//     $q = "UPDATE `rooms` SET `status`=? WHERE `sr_no`=?";
-//     $v = [$frm_data['value'], $frm_data['toggle_status']];
+    $q = "UPDATE `user_cred` SET `status`=? WHERE `sr_no`=?";
+    $v = [$frm_data['value'], $frm_data['toggle_status']];
 
-//     if (update($q, $v, 'ii')) {
-//         echo 1;
-//     } else {
-//         echo 0;
-//     }
-// }
+    if (update($q, $v, 'ii')) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
 
-// if (isset($_POST['remove_room'])) {
+if (isset($_POST['remove_user'])) {
 
-//     $frm_data = filteration($_POST);
+    $frm_data = filteration($_POST);
+   
+    $res = deleteRow("DELETE FROM `user_cred` WHERE `sr_no`=? AND `is_verified`=?", [$frm_data['user_id'], 0], 'ii');
 
-//     $res = select("SELECT * FROM `room_images` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
-
-//     while ($row = mysqli_fetch_assoc($res)) {
-//         deleteImage($row['image'], ROOMS_FOLDER);
-//     }
-
-//     $res2 = deleteRow("DELETE FROM `room_images` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
-//     $res3 = deleteRow("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
-//     $res4 = deleteRow("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
-//     $res5 = update("UPDATE `rooms` SET `removed`=? WHERE `sr_no`=?", [1, $frm_data['room_id']], 'ii');
-
-//     if ($res2 || $res3 || $res4 || $res5) {
-//         echo 1;
-//     } else {
-//         echo 0;
-//     }
-// }
+    if ($res) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}   
