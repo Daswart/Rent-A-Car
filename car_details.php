@@ -122,9 +122,11 @@ session_start();
                         </div> 
                         description;
 
-                        echo <<<book
-                        <a href="#" class="btn w-100 text-white custom-bg shadow-none mb-1">Reserveer Nu</a>
-                        book;
+                        if (!$settings_r['shutdown']) {
+                            echo <<<book
+                            <a href="#" class="btn w-100 text-white custom-bg shadow-none mb-1">Reserveer nu</a>
+                            book;
+                        }
                         ?>
                     </div>
                 </div>

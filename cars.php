@@ -81,6 +81,12 @@ session_start();
                         $car_thumb = CARS_IMG_PATH . $thumb_res['image'];
                     }
 
+                    $book_btn = "";
+
+                    if (!$settings_r['shutdown']) {
+                        $book_btn = "<a href='#' class='btn btn-sm text-white custom-bg shadow-none w-100 mb-2'>Reserveer</a>";
+                    }
+
                     echo <<<data
                     <div class="card mb-4 border-0 shadow">
                         <div class="row g-0 p-3 align-items-center">
@@ -102,7 +108,7 @@ session_start();
                         </div>
                         <div class="col-md-2 mt-lg-0 mt-md-0 mt-4 text-align-center">
                             <h6 class="mb-4"><span style='color: #2EC1AC'>$$car_data[cost_per_day]</span> per dag</h6>
-                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Boek Nu</a>
+                            $book_btn
                             <a href="car_details.php?id=$car_data[sr_no]" class="btn btn-sm w-100 btn-outline-dark shadow-none">Meer info</a>
                         </div>
                             </div>

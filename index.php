@@ -108,6 +108,12 @@ session_start();
 
                 $description = strlen($car_data['description']) > 100 ? substr($car_data['description'], 0, 100) . "..." : $car_data['description'];
 
+                $book_btn = "";
+
+                if(!$settings_r['shutdown']){
+                    $book_btn = "<a href='#' class='btn btn-sm text-white custom-bg shadow-none'>Reserveer</a>";
+                }
+
                 // print car card
                 echo <<<data
                     <div class="col-lg-4 col-md-6 my-3">
@@ -127,7 +133,7 @@ session_start();
                             <p> $description</p>
                             </div>
                                 <div class="d-flex justify-content-evenly mb-2">
-                                <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Reserveer nu</a>
+                                $book_btn
                                 <a href="car_details.php?id=$car_data[sr_no]" class="btn btn-sm btn-outline-dark shadow-none">Meer Info</a>
                                 </div>
                             </div>
