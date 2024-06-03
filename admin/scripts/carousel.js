@@ -22,13 +22,13 @@ function add_image() {
         modal.hide();
 
         if (this.responseText == 'inv_img') {
-            alert('error', 'Only JPG and PNG images are allowed!');
+            alert('error', 'Aleen JPG and PNG afbeeldingen toegestaan!');
         } else if (this.responseText == 'inv_size') {
-            alert('error', 'Image should be less than 2MB!');
+            alert('error', 'Afbeelding is groter dan 2MB!');
         } else if (this.responseText == 'upd_failed') {
-            alert('error', 'Image upload failed. Server Down!');
+            alert('error', 'Uploaden afbeelding mislukt!');
         } else {
-            alert('success', 'New image added!');
+            alert('success', 'Nieuwe afbeelding toegevoegd!');
             carousel_picture_inp.value = '';
             get_carousel()
         }
@@ -58,10 +58,10 @@ function rem_image(val) {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'Image removed!');
+            alert('success', 'Afbeelding verwijderd!');
             get_carousel();
         } else {
-            alert('error', 'Server down!')
+            alert('error', 'Afbeelding verwijderen mislukt!')
         }
     }
 
