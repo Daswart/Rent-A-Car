@@ -9,7 +9,7 @@ adminLogin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Users </title>
+    <title>Admin Panel - Klanten</title>
     <?php require('inc/links.php'); ?>
 </head>
 
@@ -21,15 +21,14 @@ adminLogin();
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">USERS</h3>
+                <h3 class="mb-4">KLANTEN</h3>
 
                 <!-- Room section -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
 
                         <div class="text-end mb-4">
-                            <!-- <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#add-room">
-                                <i class="bi bi-plus-square"></i> Add -->
+                        <input type="text" oninput="search_user(this.value)" class="form-control shadow_none w-25 ms-auto" placeholder="Zoeken op naam..">
                             </button>
                         </div>
 
