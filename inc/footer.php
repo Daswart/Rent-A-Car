@@ -181,5 +181,13 @@
 
     });
 
+    function checkLoginToBook(status, room_id) {
+        if (status) {
+            window.location.href = 'confirm_booking.php?id=' + room_id;
+        } else {
+            alert('error', 'Log in om een auto te kunnen reserveren!');
+        }
+    }
+
     setActive();
 </script>

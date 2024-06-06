@@ -83,8 +83,12 @@ session_start();
 
                     $book_btn = "";
 
-                    if (!$settings_r['shutdown']) {
-                        $book_btn = "<a href='#' class='btn btn-sm text-white custom-bg shadow-none w-100 mb-2'>Reserveer</a>";
+                    if(!$settings_r['shutdown']){
+                        $login = 0;
+                        if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                            $login = 1;
+                        }    
+                        $book_btn = "<button onclick='checkLoginToBook($login, $car_data[sr_no])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
                     }
 
                     echo <<<data
