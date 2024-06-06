@@ -172,8 +172,12 @@
             else if (this.responseText == 'invalid_pass') {
                 alert('error', " Onjuist wachtwoord!");
             } else {
-                console.log("alles gelukt")
-               window.location = window.location.pathname;
+                let fileurl = window.location.href.split('/').pop().split('?').shift()
+                if (fileurl = 'room_details.php') {
+                    window.location = window.location.href
+                } else {
+                    window.location = window.location.pathname;
+                }
             }
         }
 
