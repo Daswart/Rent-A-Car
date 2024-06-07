@@ -1,5 +1,5 @@
 <?php
-session_start() 
+session_start()
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,7 +131,12 @@ session_start()
                                     <input name="check-out" type="date" class="form-control shadow-none" required>
                                 </div>
                                 <div class="col-12">
-                                    <button name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1">Reserveren</button>
+                                    <div class="spinner-border text-info mb-3 d-none" id="info_loader" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <h6 class="mb-3 text-danger" id="pay_info">
+                                        Geef de in- en uitcheckdatum op</h6>
+                                    <button name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Reserveer nu</button>
                                 </div>
                             </div>
                         </form>
