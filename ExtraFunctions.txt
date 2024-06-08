@@ -1,4 +1,4 @@
-<<< START CHECK FOR NEW PASSWORD FUNCTION 
+ - <<< START CHECK FOR NEW PASSWORD FUNCTION 
 function isPasswordTooSimilar($oldPassword, $newPassword, $threshold = 3) {
     $distance = levenshtein($oldPassword, $newPassword);
     return $distance <= $threshold;
@@ -13,3 +13,5 @@ if (isPasswordTooSimilar($oldPassword, $newPassword)) {
     echo "<script>alert('The new password is acceptable.');</script>";
 }
 END CHECK FOR NEW PASSWORD FUNCTION >>>
+
+- Delete user image on user delete.  
