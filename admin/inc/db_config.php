@@ -107,6 +107,7 @@ function insert($sql, $values, $datatypes)
             die("<br>Query kan niet worden uitgevoerd - Insert</p>");
         }
     } else {
+        echo mysqli_error($con);
         die("Query kan niet worden voorbereid - Insert");
     }
 }

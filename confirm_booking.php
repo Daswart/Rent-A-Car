@@ -107,7 +107,7 @@ session_start();
             <div class="col-lg-5 col-md-12 px-4">
                 <div class="card mb-4 border-0 shadow-sm rounded-3">
                     <div class="card-body">
-                        <form action="#" id="booking_form">
+                    <form action="book_now.php" method="POST" id="booking_form">
                             <h6 class="mb-3">RESERVERING DETAILS</h6>
                             <div class="row">
                                 <div class="col-md-6 mb-1">
@@ -134,9 +134,9 @@ session_start();
                                     <div class="spinner-border text-info mb-3 d-none" id="info_loader" role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
-                                    <h6 class="mb-3 text-danger" id="pay_info">
+                                    <h6 class="mb-3 text-danger" id="book_info">
                                         Geef de start -en inleverdatum op</h6>
-                                    <button name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Reserveer nu</button>
+                                    <button name="book_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Reserveer nu</button>
                                 </div>
                             </div>
                         </form>
@@ -150,13 +150,13 @@ session_start();
     <script>
         let booking_form = document.getElementById('booking_form');
         let info_loader = document.getElementById('info_loader');
-        let pay_info = document.getElementById('pay_info');
+        let pay_info = document.getElementById('book_info');
 
         function check_availability() {
             let checkin_val = booking_form.elements['checkin'].value;
             let checkout_val = booking_form.elements['checkout'].value;
 
-            booking_form.elements['pay_now'].setAttribute('disabled', true);
+            booking_form.elements['book_now'].setAttribute('disabled', true);
 
             if (checkin_val != '' && checkout_val != '') {
 
@@ -187,7 +187,7 @@ session_start();
                     } else {
                         pay_info.innerHTML = "Aantal dagen: " + data.days + "<br>Totale bedrag: $" + data.payment;
                         pay_info.classList.replace('text-danger', 'text-dark');
-                        booking_form.elements['pay_now'].removeAttribute('disabled');
+                        booking_form.elements['book_now'].removeAttribute('disabled');
                     }
                     pay_info.classList.remove('d-none');
                     info_loader.classList.add('d-none');
