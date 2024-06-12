@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Gegenereerd op: 07 jun 2024 om 14:11
+-- Gegenereerd op: 12 jun 2024 om 09:28
 -- Serverversie: 5.7.28
 -- PHP-versie: 7.3.12
 
@@ -42,6 +42,61 @@ CREATE TABLE IF NOT EXISTS `admin_cred` (
 
 INSERT INTO `admin_cred` (`sr_no`, `admin_name`, `admin_pass`) VALUES
 (1, 'Jansen ', '12345');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `booking_details`
+--
+
+DROP TABLE IF EXISTS `booking_details`;
+CREATE TABLE IF NOT EXISTS `booking_details` (
+  `sr_no` int(11) NOT NULL AUTO_INCREMENT,
+  `booking_id` int(11) NOT NULL,
+  `car_name` varchar(100) NOT NULL,
+  `price` int(11) NOT NULL,
+  `total_pay` int(11) NOT NULL,
+  `car_no` int(11) DEFAULT NULL,
+  `user_name` varchar(100) NOT NULL,
+  `phonenum` varchar(100) NOT NULL,
+  `address` varchar(150) NOT NULL,
+  PRIMARY KEY (`sr_no`),
+  KEY `booking_id` (`booking_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `booking_details`
+--
+
+INSERT INTO `booking_details` (`sr_no`, `booking_id`, `car_name`, `price`, `total_pay`, `car_no`, `user_name`, `phonenum`, `address`) VALUES
+(2, 4, 'Mercedes W126', 200, 600, NULL, 'Daan Swart', '0681701480', 'iepenstraat 4');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `booking_order`
+--
+
+DROP TABLE IF EXISTS `booking_order`;
+CREATE TABLE IF NOT EXISTS `booking_order` (
+  `booking_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `car_id` int(11) NOT NULL,
+  `check_in` date NOT NULL,
+  `check_out` date NOT NULL,
+  `order_id` varchar(150) NOT NULL,
+  `datentime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`booking_id`),
+  KEY `user_id` (`user_id`),
+  KEY `car_id` (`car_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `booking_order`
+--
+
+INSERT INTO `booking_order` (`booking_id`, `user_id`, `car_id`, `check_in`, `check_out`, `order_id`, `datentime`) VALUES
+(4, 12, 9, '2024-06-12', '2024-06-15', 'ORD_122868937', '2024-06-12 10:53:34');
 
 -- --------------------------------------------------------
 
@@ -226,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 INSERT INTO `settings` (`sr_no`, `site_title`, `site_about`, `shutdown`) VALUES
-(1, 'Rent-A-Car', 'Over Ons sectie', 0);
+(1, 'Rent-A-Car', 'Lorem ipsum dolor sit amet consectetur adipiscing elit ut, sociis ultricies vehicula euismod justo dis duis, aenean odio etiam id in malesuada nunc. Sem nisi in ligula ornare commodo vitae curae susc.', 0);
 
 -- --------------------------------------------------------
 
@@ -314,6 +369,19 @@ INSERT INTO `user_queries` (`sr_no`, `name`, `email`, `subject`, `message`, `dat
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
+
+--
+-- Beperkingen voor tabel `booking_details`
+--
+ALTER TABLE `booking_details`
+  ADD CONSTRAINT `booking_details_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking_order` (`booking_id`);
+
+--
+-- Beperkingen voor tabel `booking_order`
+--
+ALTER TABLE `booking_order`
+  ADD CONSTRAINT `booking_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_cred` (`sr_no`),
+  ADD CONSTRAINT `booking_order_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `cars` (`sr_no`);
 
 --
 -- Beperkingen voor tabel `car_facilities`
