@@ -128,7 +128,7 @@ session_start();
                                 $login = 1;
                             }
                             echo <<<book
-                            <button onclick='checkLoginToBook($login, $car_data[sr_no])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now</button>
+                            <button onclick='checkLoginToBook($login, $car_data[sr_no])' class="btn w-100 text-white custom-bg shadow-none mb-1">Reserveer</button>
                             book;
                         }
                         ?>

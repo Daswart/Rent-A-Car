@@ -88,7 +88,7 @@ session_start();
                         if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
                             $login = 1;
                         }    
-                        $book_btn = "<button onclick='checkLoginToBook($login, $car_data[sr_no])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
+                        $book_btn = "<button onclick='checkLoginToBook($login, $car_data[sr_no])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Reserveer</button>";
                     }
 
                     echo <<<data

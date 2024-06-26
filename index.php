@@ -116,7 +116,7 @@ session_start();
                         $login = 1;
                     }    
                     $book_btn = "<button onclick='checkLoginToBook($login, $car_data[sr_no])' 
-                    class='btn btn-sm text-white custom-bg shadow-none'>Book Now</button>";
+                    class='btn btn-sm text-white custom-bg shadow-none'>Reserveer</button>";
                 }
 
                 // print car card
